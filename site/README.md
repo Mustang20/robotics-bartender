@@ -10,38 +10,42 @@ index.html            ← the whole site (HTML + CSS + JS in one file), with i18
 privacy.html          ← Privacy Policy (bilingual)
 cookies.html          ← Cookie Policy (bilingual)
 terms.html            ← Terms of Service (bilingual)
-admin.html            ← visual editor: double-click text on a live preview to edit
-content/site.json     ← editable text & image overrides (read by index.html, written by admin/CMS)
+content/site.json     ← editable text & image overrides (read by index.html, written by the CMS)
 .pages.yml            ← Pages CMS configuration (the browser editor)
 assets/img/           ← all photos, the demo video, and both logo versions
 ```
 
-## Visual editor (admin.html)
-
-For quick edits without GitHub, open **`admin.html`** through a local server. It shows
-your real site; double-click any text to edit it in place, click an image to change its
-file, switch EN/ES to edit each language, then press **Save changes**. It writes to
-`content/site.json`, which the site reads automatically.
-
-1. From this folder start a local server, e.g. `python -m http.server`.
-2. Open `http://localhost:8000/admin.html`.
-3. Edit, then Save. In Chrome/Edge it writes straight to `content/site.json` (pick that
-   file when asked the first time). In other browsers it downloads `site.json` — move it
-   into the `content/` folder, replacing the old one.
-4. Reload the site to see the changes. Commit/push `content/site.json` to publish.
-
-> The editor must be served over `http://` (not opened from disk) so it can read the page.
-> Unlike Pages CMS (which only exposes the fields listed in `.pages.yml`), `admin.html`
-> lets you edit **any** text on the page, and saves only what you changed into
-> `content/site.json`. Pages CMS remains available for editing from anywhere via GitHub.
-
 ## Languages (EN / ES)
 
-- The EN/ES switcher is in the top-right of the nav. The choice is remembered
+- The EN/ES switcher is a small fixed pill on the right edge of the screen. The choice is remembered
   (`localStorage`) and shared across the legal pages too.
 - All on-page text lives in the `I18N` dictionary inside `index.html` (the `en` and
   `es` objects). To change wording **without the CMS**, edit the matching key in both
   languages so they stay in sync.
+
+## Inline editor (edit on the live site)
+
+The site has a built-in editor that lets you click text on the real page, edit it, and
+publish straight to GitHub. No separate app, no server.
+
+**One-time setup — create a token:**
+1. GitHub → Settings → Developer settings → **Fine-grained personal access tokens** →
+   Generate new token. Limit it to **only this repository**, and under *Repository
+   permissions* set **Contents: Read and write**. Copy the token (starts `github_pat_…`).
+
+**Editing:**
+1. On the live site, press **Ctrl+Shift+E** (or add `#admin` to the URL). A login appears.
+2. Enter your GitHub **owner**, **repository**, branch (`main`), path (`content/site.json`)
+   and paste the **token**, then *Start editing*. The token is stored only in your browser.
+3. **Click any text** on the page to edit it in place. Use the **EN / ES** buttons in the
+   bottom toolbar to edit each language.
+4. Press **Publish**. It commits `content/site.json` to your repo; GitHub Pages rebuilds and
+   the change is live for everyone in about a minute.
+5. *Exit* leaves edit mode; *Forget saved token* (on the login) clears the token.
+
+Notes: the editor only works once the repo is on GitHub and the site is served over
+https (i.e. on Pages). The token is powerful, so use it only on your own device. Pages CMS
+(below) remains available as an alternative.
 
 ## Editing content from the browser (Pages CMS)
 

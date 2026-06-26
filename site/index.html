@@ -470,6 +470,29 @@
 
   ::selection{background:var(--turquoise); color:#062523;}
 
+  /* ---------- BRAND STRUCTURE / ACCENTS ---------- */
+  /* turquoise hairline framing the top of each light section */
+  #concept, #process, #faq{ position:relative; }
+  #concept::before, #process::before, #faq::before{
+    content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:min(var(--max), 100% - 56px); height:1px;
+    background:linear-gradient(90deg, transparent, rgba(0,194,179,0.45), transparent);
+  }
+  /* premium, energetic treatment for the Use-cases headline */
+  .cases .section-head{position:relative;}
+  .cases .section-head > *{position:relative; z-index:1;}
+  .cases .section-head::before{
+    content:""; position:absolute; left:-40px; top:-50px; width:360px; height:220px;
+    background:radial-gradient(60% 60% at 30% 45%, rgba(0,194,179,0.30), transparent 70%);
+    filter:blur(14px); z-index:0; pointer-events:none;
+  }
+  .cases-h2{font-size:clamp(32px,4.4vw,50px); line-height:1.04;}
+  .cases-h2 .hl{
+    background:linear-gradient(105deg, var(--turquoise) 0%, var(--turquoise-glow) 55%, #C7FBF3 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+  }
+
   /* ---------- COOKIE BANNER ---------- */
   .cookie-banner{
     position:fixed; left:18px; right:18px; bottom:18px; z-index:400;
@@ -486,6 +509,40 @@
   .cookie-actions .btn-ghost{border-color:rgba(234,246,244,0.25); color:var(--text-light);}
   .cookie-actions .btn-ghost:hover{border-color:var(--turquoise-glow); color:var(--turquoise-glow);}
   @media (max-width:560px){ .cookie-banner{flex-direction:column; align-items:stretch; bottom:74px;} .cookie-actions .btn{flex:1; justify-content:center;} }
+
+  /* ---------- INLINE EDITOR ---------- */
+  .ed-hide{display:none !important;}
+  .ed-modal-bg{position:fixed; inset:0; background:rgba(4,8,9,0.72); z-index:1000; display:flex; align-items:center; justify-content:center; padding:20px;}
+  .ed-modal{background:var(--ink-soft); border:1px solid var(--ink-edge); border-radius:16px; padding:28px; width:100%; max-width:430px; box-shadow:0 30px 80px -20px rgba(0,0,0,.75);}
+  .ed-modal h3{font-family:'Space Grotesk',sans-serif; color:var(--text-light); font-size:19px; margin:0 0 6px;}
+  .ed-modal p{color:var(--text-light-dim); font-size:13px; line-height:1.5; margin:0 0 18px;}
+  .ed-modal p a{color:var(--turquoise-glow); text-decoration:underline;}
+  .ed-row{margin-bottom:12px;}
+  .ed-row label{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-light-dim); margin-bottom:6px; display:block;}
+  .ed-row input{width:100%; background:rgba(255,255,255,0.04); border:1px solid var(--ink-edge); border-radius:10px; padding:11px 13px; color:var(--text-light); font-family:'Inter',sans-serif; font-size:14px;}
+  .ed-row input:focus{outline:none; border-color:var(--turquoise); background:rgba(0,194,179,0.06);}
+  .ed-actions{display:flex; gap:10px; margin-top:6px; justify-content:space-between; align-items:center;}
+  .ed-actions .right{display:flex; gap:10px;}
+  .ed-link{background:none; border:none; color:var(--text-light-dim); font-size:12px; text-decoration:underline; cursor:pointer; font-family:inherit;}
+  .ed-msg{font-size:12.5px; margin-top:12px; min-height:16px; color:var(--text-light-dim); line-height:1.4;}
+  .ed-msg.ok{color:var(--turquoise-glow);}
+  .ed-msg.err{color:#f87171;}
+  .ed-toolbar{position:fixed; bottom:18px; left:50%; transform:translateX(-50%); z-index:1000;
+    background:var(--ink-soft); border:1px solid var(--turquoise-deep); border-radius:999px;
+    padding:8px 10px 8px 18px; display:flex; align-items:center; gap:14px; box-shadow:0 16px 44px -12px rgba(0,0,0,.8); max-width:calc(100vw - 24px);}
+  .ed-toolbar .ed-dot{width:9px; height:9px; border-radius:50%; background:var(--turquoise); box-shadow:0 0 0 3px rgba(0,194,179,.22); flex:none;}
+  .ed-toolbar .ed-tl{color:var(--text-light); font-size:13px; font-weight:600; white-space:nowrap;}
+  .ed-toolbar .ed-seg{display:flex; background:rgba(255,255,255,0.06); border:1px solid var(--ink-edge); border-radius:999px; padding:3px;}
+  .ed-toolbar .ed-seg button{background:transparent; border:none; color:var(--text-light-dim); font:inherit; font-size:12.5px; font-weight:700; padding:5px 11px; border-radius:999px; cursor:pointer;}
+  .ed-toolbar .ed-seg button.active{background:var(--turquoise); color:#062523;}
+  .ed-toolbar .ed-btn{border:none; border-radius:999px; padding:8px 16px; font:inherit; font-size:13px; font-weight:600; cursor:pointer;}
+  .ed-toolbar .ed-btn.pub{background:var(--turquoise); color:#062523;}
+  .ed-toolbar .ed-btn.pub:disabled{opacity:.5; cursor:default;}
+  .ed-toolbar .ed-btn.exit{background:transparent; border:1px solid var(--ink-edge); color:var(--text-light);}
+  .ed-toolbar .ed-tbmsg{font-size:12px; color:var(--text-light-dim); white-space:nowrap; max-width:200px; overflow:hidden; text-overflow:ellipsis;}
+  body.ed-on [data-i18n]:not(option):hover, body.ed-on [data-i18n-html]:hover{outline:2px dashed var(--turquoise); outline-offset:3px; cursor:text;}
+  body.ed-on [data-i18n].ed-editing, body.ed-on [data-i18n-html].ed-editing{outline:2px solid var(--turquoise); background:rgba(0,194,179,.12);}
+  @media (max-width:560px){ .ed-toolbar{flex-wrap:wrap; border-radius:16px; justify-content:center;} }
 </style>
 </head>
 <body>
@@ -565,11 +622,11 @@
 </section>
 
 <!-- ================= USE CASES ================= -->
-<section id="cases">
+<section class="on-dark" id="cases">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow" data-i18n="cases.eyebrow">USE CASES</div>
-      <h2 data-i18n="cases.h2">Built for the moments that need a wow factor.</h2>
+      <h2 class="cases-h2" data-i18n-html="cases.h2">Built for the moments that need a <span class="hl">wow factor</span>.</h2>
       <p data-i18n="cases.p">The same arm, restyled and rebriefed for the room it's working in, from a wedding welcome table to a trade-show booth.</p>
     </div>
     <div class="cases reveal">
@@ -578,11 +635,11 @@
         <div class="case-overlay"><div class="tag" data-i18n="cases.c1tag">CEREMONY & RECEPTION</div><h4 data-i18n="cases.c1h">Weddings & private events</h4></div>
       </div>
       <div class="case-card">
-        <img src="assets/img/lancome-event.jpg" alt="Robotic bar customized with a brand panel at a corporate event" loading="lazy">
+        <img src="assets/img/nextiva-menu.jpg" alt="Robotic bar with a touchscreen drink menu at a corporate event" loading="lazy">
         <div class="case-overlay"><div class="tag" data-i18n="cases.c2tag">FINTECH · TELECOM · IT GALAS</div><h4 data-i18n="cases.c2h">Corporate events</h4></div>
       </div>
       <div class="case-card">
-        <img src="assets/img/nextiva-menu.jpg" alt="Robotic bar with a touchscreen drink menu at a brand activation booth" loading="lazy">
+        <img src="assets/img/lancome-event.jpg" alt="Robotic bar customized with a brand panel at a brand activation" loading="lazy">
         <div class="case-overlay"><div class="tag" data-i18n="cases.c3tag">LAUNCHES & TRADE SHOWS</div><h4 data-i18n="cases.c3h">Brand activations</h4></div>
       </div>
       <div class="case-card">
@@ -869,6 +926,39 @@
   </div>
 </div>
 
+<!-- ================= INLINE EDITOR (hidden until triggered) ================= -->
+<div class="ed-modal-bg ed-hide" id="edLogin">
+  <div class="ed-modal">
+    <h3>Site editor</h3>
+    <p>Log in with a GitHub <b>fine-grained token</b> that has <b>Contents: read &amp; write</b> on this repo. It is stored only in this browser. <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Create a token</a></p>
+    <div class="ed-row"><label>GitHub owner</label><input id="edOwner" placeholder="your-username" autocomplete="off"></div>
+    <div class="ed-row"><label>Repository</label><input id="edRepo" placeholder="robotics-bartender" autocomplete="off"></div>
+    <div class="ed-row"><label>Branch</label><input id="edBranch" value="main" autocomplete="off"></div>
+    <div class="ed-row"><label>Content file path</label><input id="edPath" value="content/site.json" autocomplete="off"></div>
+    <div class="ed-row"><label>Access token</label><input id="edToken" type="password" placeholder="github_pat_…" autocomplete="off"></div>
+    <div class="ed-actions">
+      <button class="ed-link" id="edForget" type="button">Forget saved token</button>
+      <div class="right">
+        <button class="btn btn-ghost" id="edCancel" type="button" style="padding:11px 18px;">Cancel</button>
+        <button class="btn btn-primary" id="edStart" type="button" style="padding:11px 18px;">Start editing</button>
+      </div>
+    </div>
+    <div class="ed-msg" id="edMsg"></div>
+  </div>
+</div>
+
+<div class="ed-toolbar ed-hide" id="edToolbar">
+  <span class="ed-dot"></span>
+  <span class="ed-tl">Editing</span>
+  <div class="ed-seg" id="edLangSeg">
+    <button data-lang="en" type="button">EN</button>
+    <button data-lang="es" type="button">ES</button>
+  </div>
+  <span class="ed-tbmsg" id="edTbMsg">Click any text to edit</span>
+  <button class="ed-btn exit" id="edExit" type="button">Exit</button>
+  <button class="ed-btn pub" id="edPublish" type="button">Publish</button>
+</div>
+
 <script>
   document.documentElement.classList.add('js');
 
@@ -888,7 +978,7 @@
       'concept.p1h':'Custom branding to match your event','concept.p1p':"Personalise the counter to your event's style, with your logo on the front panel and the backlight colours set to match your palette.",
       'concept.p2h':'Battery or mains, goes anywhere','concept.p2p':"Robobar runs on battery for full off-grid freedom, or plugs into a standard 230V socket when one's nearby. Set it up on the lawn, the rooftop or the show floor, wherever the event actually is.",
       'concept.p3h':'Built-in marketing tools','concept.p3p':"Gate each pour behind a QR code, a short survey or a follow on your event's social account. Guests get a drink, you get a lead or a new follower.",
-      'cases.eyebrow':'USE CASES','cases.h2':'Built for the moments that need a wow factor.','cases.p':"The same arm, restyled and rebriefed for the room it's working in, from a wedding welcome table to a trade-show booth.",
+      'cases.eyebrow':'USE CASES','cases.h2':'Built for the moments that need a <span class="hl">wow factor</span>.','cases.p':"The same arm, restyled and rebriefed for the room it's working in, from a wedding welcome table to a trade-show booth.",
       'cases.c1tag':'CEREMONY & RECEPTION','cases.c1h':'Weddings & private events','cases.c2tag':'FINTECH · TELECOM · IT GALAS','cases.c2h':'Corporate events','cases.c3tag':'LAUNCHES & TRADE SHOWS','cases.c3h':'Brand activations','cases.c4tag':'CELEBRATIONS','cases.c4h':'Private parties',
       'exp.eyebrow':'THE EXPERIENCE','exp.h2':'More than a drink. A moment worth sharing.','exp.p':'Robobar turns serving into a show, and a show into content, conversation and a brand people remember.',
       'exp.v1h':'A magnet for the room','exp.v1p':'The arm draws a crowd the second it moves. Guests gather, phones come out, and your event has its signature moment, the one people remember and retell.',
@@ -935,7 +1025,7 @@
       'concept.p1h':'Personalización de la barra según tu evento','concept.p1p':'Personalizamos la barra al estilo de tu evento, con tu logotipo en el panel frontal y los colores de la iluminación ajustados a tu paleta.',
       'concept.p2h':'Batería o red eléctrica, va a cualquier sitio','concept.p2p':'Robobar funciona con batería para total libertad sin enchufes, o se conecta a una toma estándar de 230V cuando hay una cerca. Colócalo en el césped, la azotea o la feria, donde el evento realmente esté.',
       'concept.p3h':'Herramientas de marketing integradas','concept.p3p':'Condiciona cada servicio a un código QR, una breve encuesta o un seguimiento en la red social del evento. Los invitados consiguen una copa, tú consigues un lead o un nuevo seguidor.',
-      'cases.eyebrow':'CASOS DE USO','cases.h2':'Creado para los momentos que necesitan un factor sorpresa.','cases.p':'El mismo brazo, reestilizado y readaptado para la sala en la que trabaja, desde una mesa de bienvenida de boda hasta un stand de feria.',
+      'cases.eyebrow':'CASOS DE USO','cases.h2':'Creado para los momentos que necesitan un <span class="hl">factor sorpresa</span>.','cases.p':'El mismo brazo, reestilizado y readaptado para la sala en la que trabaja, desde una mesa de bienvenida de boda hasta un stand de feria.',
       'cases.c1tag':'CEREMONIA Y BANQUETE','cases.c1h':'Bodas y eventos privados','cases.c2tag':'FINTECH · TELECO · GALAS IT','cases.c2h':'Eventos corporativos','cases.c3tag':'LANZAMIENTOS Y FERIAS','cases.c3h':'Activaciones de marca','cases.c4tag':'CELEBRACIONES','cases.c4h':'Fiestas privadas',
       'exp.eyebrow':'LA EXPERIENCIA','exp.h2':'Más que una copa. Un momento que merece compartirse.','exp.p':'Robobar convierte el servicio en un espectáculo, y el espectáculo en contenido, conversación y una marca que la gente recuerda.',
       'exp.v1h':'Un imán para la sala','exp.v1p':'El brazo atrae a la multitud en cuanto se mueve. Los invitados se acercan, salen los móviles, y tu evento tiene su momento estrella, el que la gente recuerda y cuenta.',
@@ -1110,6 +1200,143 @@
   if(!localStorage.getItem('cookieConsent')){ cookieBanner.classList.add('show'); }
   document.getElementById('cookieAccept').addEventListener('click', ()=>setConsent('all'));
   document.getElementById('cookieReject').addEventListener('click', ()=>setConsent('essential'));
+
+  /* ============ INLINE EDITOR (token-based, commits content/site.json to GitHub) ============ */
+  (function(){
+    const LS='rbAdmin';
+    const $ = id => document.getElementById(id);
+    const loginEl=$('edLogin'), toolbar=$('edToolbar'), msg=$('edMsg'), tbMsg=$('edTbMsg'), pubBtn=$('edPublish');
+    let editing=false;
+    let state={ sha:null, json:{en:{},es:{},images:{}} };
+
+    function getCfg(){ try{ return JSON.parse(localStorage.getItem(LS)||'null'); }catch(e){ return null; } }
+    function setCfg(c){ try{ localStorage.setItem(LS, JSON.stringify(c)); }catch(e){} }
+    function clearCfg(){ try{ localStorage.removeItem(LS); }catch(e){} }
+
+    function showMsg(t, cls){ msg.textContent=t||''; msg.className='ed-msg'+(cls?(' '+cls):''); }
+    function showTb(t){ tbMsg.textContent=t||''; }
+
+    function openLogin(){
+      const c=getCfg()||{};
+      $('edOwner').value=c.owner||''; $('edRepo').value=c.repo||'';
+      $('edBranch').value=c.branch||'main'; $('edPath').value=c.path||'content/site.json';
+      $('edToken').value=c.token||'';
+      showMsg(''); loginEl.classList.remove('ed-hide');
+    }
+    function closeLogin(){ loginEl.classList.add('ed-hide'); }
+
+    // base64 helpers that are UTF-8 safe
+    const b64encode = s => btoa(unescape(encodeURIComponent(s)));
+    const b64decode = s => decodeURIComponent(escape(atob((s||'').replace(/\s/g,''))));
+
+    async function ghGet(c){
+      const url=`https://api.github.com/repos/${c.owner}/${c.repo}/contents/${encodeURIComponent(c.path).replace(/%2F/g,'/')}?ref=${encodeURIComponent(c.branch)}`;
+      const r=await fetch(url,{headers:{Authorization:'Bearer '+c.token, Accept:'application/vnd.github+json'}});
+      if(r.status===404) return { sha:null, json:{en:{},es:{},images:{}} };
+      if(r.status===401||r.status===403) throw new Error('Token rejected (check it has Contents read/write on this repo).');
+      if(!r.ok) throw new Error('GitHub GET failed ('+r.status+').');
+      const d=await r.json();
+      let json; try{ json=JSON.parse(b64decode(d.content)); }catch(e){ json={}; }
+      json.en=json.en||{}; json.es=json.es||{}; json.images=json.images||{};
+      return { sha:d.sha, json };
+    }
+    async function ghPut(c, sha, json){
+      const url=`https://api.github.com/repos/${c.owner}/${c.repo}/contents/${encodeURIComponent(c.path).replace(/%2F/g,'/')}`;
+      const body={ message:'Update site content via inline editor', content:b64encode(JSON.stringify(json,null,2)+'\n'), branch:c.branch };
+      if(sha) body.sha=sha;
+      const r=await fetch(url,{method:'PUT', headers:{Authorization:'Bearer '+c.token, Accept:'application/vnd.github+json','Content-Type':'application/json'}, body:JSON.stringify(body)});
+      if(!r.ok){ let e={}; try{ e=await r.json(); }catch(_){ } throw new Error('Publish failed ('+r.status+'). '+(e.message||'')); }
+      const d=await r.json(); return d.content.sha;
+    }
+
+    async function startEditing(){
+      const c={ owner:$('edOwner').value.trim(), repo:$('edRepo').value.trim(), branch:($('edBranch').value.trim()||'main'), path:($('edPath').value.trim()||'content/site.json'), token:$('edToken').value.trim() };
+      if(!c.owner||!c.repo||!c.token){ showMsg('Owner, repository and token are required.', 'err'); return; }
+      showMsg('Connecting to GitHub…');
+      try{
+        const res=await ghGet(c);
+        state.sha=res.sha; state.json=res.json;
+        setCfg(c);
+        // apply any saved repo content onto the page so we edit the live values
+        ['en','es'].forEach(l=>{ if(state.json[l]) Object.assign(I18N[l], state.json[l]); });
+        applyLang(currentLang);
+        closeLogin(); enterEditMode();
+      }catch(err){ showMsg(err.message||'Connection failed.', 'err'); }
+    }
+
+    function enterEditMode(){
+      editing=true;
+      document.body.classList.add('ed-on');
+      toolbar.classList.remove('ed-hide');
+      document.querySelectorAll('#edLangSeg button').forEach(b=>b.classList.toggle('active', b.dataset.lang===currentLang));
+      showTb('Click any text to edit · '+currentLang.toUpperCase());
+    }
+    function exitEditMode(){
+      editing=false;
+      document.body.classList.remove('ed-on');
+      toolbar.classList.add('ed-hide');
+      document.querySelectorAll('.ed-editing').forEach(el=>{ el.contentEditable='false'; el.classList.remove('ed-editing'); });
+    }
+
+    // delegated editing handlers (gated by `editing`)
+    document.addEventListener('click', e=>{
+      if(!editing) return;
+      const el=e.target.closest('[data-i18n], [data-i18n-html]');
+      if(!el || el.matches('option')) return;
+      if(el.closest('.ed-toolbar')||el.closest('.ed-modal')) return;
+      if(el.tagName==='A') e.preventDefault();
+      if(!el.isContentEditable){ el.contentEditable='true'; el.classList.add('ed-editing'); el.focus(); }
+    }, true);
+    document.addEventListener('focusout', e=>{
+      const el=e.target;
+      if(!editing || !el.isContentEditable) return;
+      if(!(el.matches && el.matches('[data-i18n], [data-i18n-html]'))) return;
+      el.contentEditable='false'; el.classList.remove('ed-editing');
+      const isHtml=el.hasAttribute('data-i18n-html');
+      const key=isHtml?el.dataset.i18nHtml:el.dataset.i18n;
+      const val=isHtml?el.innerHTML.trim():el.textContent.trim();
+      state.json[currentLang][key]=val; I18N[currentLang][key]=val;
+      pubBtn.disabled=false; showTb('Edited “'+key+'”');
+    }, true);
+    document.addEventListener('keydown', e=>{
+      if(!editing) return;
+      const el=e.target;
+      if(el && el.isContentEditable){
+        if(e.key==='Enter' && !el.hasAttribute('data-i18n-html')){ e.preventDefault(); el.blur(); }
+        else if(e.key==='Escape'){ el.blur(); }
+      }
+    }, true);
+
+    document.querySelectorAll('#edLangSeg button').forEach(b=>{
+      b.addEventListener('click', ()=>{ applyLang(b.dataset.lang);
+        document.querySelectorAll('#edLangSeg button').forEach(x=>x.classList.toggle('active', x===b));
+        showTb('Editing '+b.dataset.lang.toUpperCase());
+      });
+    });
+
+    pubBtn.addEventListener('click', async ()=>{
+      const c=getCfg(); if(!c) return;
+      pubBtn.disabled=true; showTb('Publishing…');
+      try{
+        // prune empty strings so we never blank a field
+        const clean=o=>{ const r={}; Object.entries(o||{}).forEach(([k,v])=>{ if(v!=null && v!=='') r[k]=v; }); return r; };
+        const out={ en:clean(state.json.en), es:clean(state.json.es), images:clean(state.json.images) };
+        state.sha=await ghPut(c, state.sha, out);
+        showTb('Published ✓ live in ~1 min');
+      }catch(err){ showTb(err.message||'Publish failed'); pubBtn.disabled=false; }
+    });
+
+    $('edStart').addEventListener('click', startEditing);
+    $('edCancel').addEventListener('click', closeLogin);
+    $('edForget').addEventListener('click', ()=>{ clearCfg(); $('edToken').value=''; showMsg('Saved token cleared from this browser.', 'ok'); });
+    $('edExit').addEventListener('click', exitEditMode);
+
+    // triggers: Ctrl+Shift+E, or visiting with #admin
+    window.addEventListener('keydown', e=>{
+      if((e.ctrlKey||e.metaKey) && e.shiftKey && (e.key==='E'||e.key==='e')){ e.preventDefault(); editing?exitEditMode():openLogin(); }
+    });
+    if(location.hash==='#admin') openLogin();
+  })();
 </script>
 
 </body>
