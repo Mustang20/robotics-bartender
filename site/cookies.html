@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy — Robotics Bartender</title>
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#0B1417;--paper:#F5F4EF;--turquoise:#00C2B3;--turquoise-deep:#036663;--steel:#5B6770;--text-dark:#0F1718;--max:820px;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--text-dark);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.65;}
+  a{color:var(--turquoise-deep);}
+  .legal-nav{position:sticky;top:0;background:rgba(11,20,23,0.95);backdrop-filter:blur(8px);z-index:10;}
+  .legal-nav .inner{max-width:var(--max);margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .legal-nav a.back{color:#EAF6F4;font-size:14px;font-weight:600;}
+  .legal-nav a.back:hover{color:var(--turquoise);}
+  .lang-switch{display:flex;gap:4px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:3px;}
+  .lang-btn{background:transparent;border:none;border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:600;color:#A9C4C0;font-family:'Inter',sans-serif;cursor:pointer;}
+  .lang-btn.active{background:var(--turquoise);color:#062523;}
+  main{max-width:var(--max);margin:0 auto;padding:54px 24px 90px;}
+  h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,5vw,40px);margin:0 0 6px;}
+  .updated{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--steel);text-transform:uppercase;letter-spacing:.08em;margin-bottom:36px;}
+  h2{font-family:'Space Grotesk',sans-serif;font-size:21px;margin:38px 0 12px;}
+  p,li{font-size:15.5px;color:#26333a;}
+  ul{padding-left:20px;}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;}
+  th,td{text-align:left;border:1px solid #E9E7DF;padding:10px 12px;vertical-align:top;}
+  th{background:#fff;font-family:'IBM Plex Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--steel);}
+  .btn{display:inline-block;margin-top:8px;background:var(--turquoise);color:#062523;border:none;border-radius:999px;padding:11px 22px;font-weight:600;font-size:14px;font-family:'Inter',sans-serif;cursor:pointer;}
+  footer{max-width:var(--max);margin:0 auto;padding:0 24px 60px;font-size:12.5px;color:var(--steel);}
+  [data-lang-block]{display:none;}
+  [data-lang-block].show{display:block;}
+</style>
+</head>
+<body>
+<div class="legal-nav"><div class="inner">
+  <a class="back" href="index.html">← Robotics Bartender</a>
+  <div class="lang-switch" id="langSwitch">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+  </div>
+</div></div>
+
+<main>
+<!-- ====================== ENGLISH ====================== -->
+<div data-lang-block="en">
+  <h1>Cookie Policy</h1>
+  <div class="updated">Last updated: 26 June 2026</div>
+
+  <p>A cookie is a small file stored on your device when you visit a website. This site is built to use as few cookies as possible.</p>
+
+  <h2>1. Cookies we use</h2>
+  <table>
+    <tr><th>Name</th><th>Type</th><th>Purpose</th><th>Duration</th></tr>
+    <tr><td>cookieConsent</td><td>Essential</td><td>Remembers your cookie choice so we don't ask again.</td><td>Persistent (localStorage)</td></tr>
+    <tr><td>lang</td><td>Essential</td><td>Remembers your language preference (EN/ES).</td><td>Persistent (localStorage)</td></tr>
+    <tr><td>Analytics (optional)</td><td>Optional</td><td>Anonymous traffic measurement. Only set if you click "Accept all". None are active by default.</td><td>Up to 24 months</td></tr>
+  </table>
+  <p>Note: we store the two essential items above using your browser's local storage rather than traditional cookies; they never leave your device and are strictly necessary for the site to work and remember your preferences.</p>
+
+  <h2>2. Third-party resources</h2>
+  <p>This site loads fonts from <b>Google Fonts</b> and flag images from <b>flagcdn.com</b>, and submits the contact form via <b>Formspree</b>. These services may receive your IP address as a technical requirement to deliver content. They do not set advertising cookies through this site.</p>
+
+  <h2>3. Managing cookies</h2>
+  <p>You chose your preference in the banner shown on your first visit. You can clear your choice and be asked again using the button below, or delete cookies and site data at any time through your browser settings.</p>
+  <button class="btn" onclick="resetConsent()">Reset cookie preferences</button>
+
+  <h2>4. More information</h2>
+  <p>For how we handle personal data, see our <a href="privacy.html">Privacy Policy</a>.</p>
+</div>
+
+<!-- ====================== ESPAÑOL ====================== -->
+<div data-lang-block="es">
+  <h1>Política de Cookies</h1>
+  <div class="updated">Última actualización: 26 de junio de 2026</div>
+
+  <p>Una cookie es un pequeño archivo que se guarda en tu dispositivo al visitar un sitio web. Este sitio está diseñado para usar el menor número de cookies posible.</p>
+
+  <h2>1. Cookies que utilizamos</h2>
+  <table>
+    <tr><th>Nombre</th><th>Tipo</th><th>Finalidad</th><th>Duración</th></tr>
+    <tr><td>cookieConsent</td><td>Esencial</td><td>Recuerda tu elección sobre cookies para no volver a preguntar.</td><td>Persistente (localStorage)</td></tr>
+    <tr><td>lang</td><td>Esencial</td><td>Recuerda tu preferencia de idioma (EN/ES).</td><td>Persistente (localStorage)</td></tr>
+    <tr><td>Analítica (opcional)</td><td>Opcional</td><td>Medición anónima del tráfico. Solo se activa si pulsas "Aceptar todo". Ninguna está activa por defecto.</td><td>Hasta 24 meses</td></tr>
+  </table>
+  <p>Nota: los dos elementos esenciales anteriores se guardan en el almacenamiento local de tu navegador en lugar de cookies tradicionales; nunca salen de tu dispositivo y son estrictamente necesarios para que el sitio funcione y recuerde tus preferencias.</p>
+
+  <h2>2. Recursos de terceros</h2>
+  <p>Este sitio carga tipografías de <b>Google Fonts</b> e imágenes de banderas de <b>flagcdn.com</b>, y envía el formulario de contacto mediante <b>Formspree</b>. Estos servicios pueden recibir tu dirección IP como requisito técnico para entregar el contenido. No instalan cookies publicitarias a través de este sitio.</p>
+
+  <h2>3. Gestión de cookies</h2>
+  <p>Elegiste tu preferencia en el banner mostrado en tu primera visita. Puedes borrar tu elección y que se te vuelva a preguntar con el botón inferior, o eliminar las cookies y los datos del sitio en cualquier momento desde la configuración de tu navegador.</p>
+  <button class="btn" onclick="resetConsent()">Restablecer preferencias de cookies</button>
+
+  <h2>4. Más información</h2>
+  <p>Sobre cómo tratamos los datos personales, consulta nuestra <a href="privacy.html">Política de Privacidad</a>.</p>
+</div>
+</main>
+
+<footer>© <span id="year"></span> Robotics Bartender · Vladislavo Lysenko (autónomo), San Sebastián, Spain.</footer>
+
+<script>
+  function applyLegalLang(lang){
+    if(lang!=='es') lang='en';
+    document.documentElement.lang=lang;
+    document.querySelectorAll('[data-lang-block]').forEach(b=>b.classList.toggle('show', b.dataset.langBlock===lang));
+    document.querySelectorAll('#langSwitch .lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  function resetConsent(){ try{ localStorage.removeItem('cookieConsent'); }catch(e){} alert(document.documentElement.lang==='es' ? 'Preferencias restablecidas. Se te preguntará de nuevo en la página principal.' : 'Preferences reset. You will be asked again on the homepage.'); }
+  let lang=(function(){ try{ return localStorage.getItem('lang'); }catch(e){ return null; } })() || (navigator.language||'en').slice(0,2);
+  document.querySelectorAll('#langSwitch .lang-btn').forEach(b=>b.addEventListener('click', ()=>applyLegalLang(b.dataset.lang)));
+  document.getElementById('year').textContent=new Date().getFullYear();
+  applyLegalLang(lang);
+</script>
+</body>
+</html>

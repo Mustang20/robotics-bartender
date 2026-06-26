@@ -1,86 +1,82 @@
-# Robotics'Bartender — Landing Page
+# Robotics Bartender — Website
 
-This folder is a complete static website: one HTML file plus an `assets/img` folder.
-No build step, no framework, no server required to view it — just open `index.html`
-in a browser, or follow the deployment steps below to put it on a real domain.
+A static, bilingual (EN/ES) marketing site. No build step and no server required —
+open `index.html` in a browser, or deploy to GitHub Pages (see below).
 
 ## Files
 
 ```
-index.html              ← the whole site (HTML + CSS + JS in one file)
-assets/img/              ← all photos, the demo video, and both logo versions
+index.html            ← the whole site (HTML + CSS + JS in one file), with i18n
+privacy.html          ← Privacy Policy (bilingual)
+cookies.html          ← Cookie Policy (bilingual)
+terms.html            ← Terms of Service (bilingual)
+content/site.json     ← editable text & image overrides (read by index.html, edited by the CMS)
+.pages.yml            ← Pages CMS configuration (the browser editor)
+assets/img/           ← all photos, the demo video, and both logo versions
 ```
 
-## Before you go live — things to edit
+## Languages (EN / ES)
 
-Open `index.html` in any text editor and search (Ctrl/Cmd+F) for these placeholders:
+- The EN/ES switcher is in the top-right of the nav. The choice is remembered
+  (`localStorage`) and shared across the legal pages too.
+- All on-page text lives in the `I18N` dictionary inside `index.html` (the `en` and
+  `es` objects). To change wording **without the CMS**, edit the matching key in both
+  languages so they stay in sync.
 
-| Search for                  | Replace with                                  |
-|------------------------------|------------------------------------------------|
-| `hello@roboticsbartender.com`| your real business email                       |
-| `+34 000 000 000`            | your real phone / WhatsApp number               |
-| `@roboticsbartender`         | your real Instagram/social handle + link       |
-| `Operated as an autónomo, Spain.` | your legal trading name if you'd like it shown |
+## Editing content from the browser (Pages CMS)
 
-There are **two** copies of the email and phone (one in the contact section, one in
-the footer) — update both.
+You chose **GitHub + Pages CMS**. One-time setup:
 
-## Connecting the contact form (5 minutes)
+1. Push this `site` folder to a GitHub repository. **Make this folder the repository
+   root** (so `index.html`, `.pages.yml` and `content/` are at the top level). If you
+   instead push a parent folder, edit `.pages.yml` and prefix the paths with `site/`.
+2. Go to **https://app.pagescms.org**, sign in with GitHub, and grant access to the repo.
+3. You'll see a "Website text" collection and a "Images & video" media library. Edit a
+   field, click save — Pages CMS commits to GitHub and (once Pages is enabled) the live
+   site updates in ~1 minute.
 
-The form currently just shows an alert when submitted — it doesn't send anywhere yet.
-The fastest no-backend way to fix this is **Web3Forms** (free, no signup wall) or
-**Formspree** (free tier, very popular). Either works the same way:
+**How the override works:** `index.html` loads `content/site.json` on page load and any
+keys present there replace the built-in defaults. The starter config exposes the hero,
+a few headings, the contact intro, and the hero/concept images. To make more fields
+editable, add the key to `content/site.json` (under `en`/`es`) and a matching field in
+`.pages.yml`. Every `data-i18n` key in `index.html` is a valid candidate.
 
-1. Go to web3forms.com (or formspree.io) and create a free access key/endpoint using
-   your email address.
-2. In `index.html`, find this line:
-   ```html
-   <form class="reveal" id="quoteForm">
-   ```
-3. Replace the JavaScript form handler at the bottom of the file (the block starting
-   `document.getElementById('quoteForm').addEventListener(...)`) with a version that
-   posts to your new endpoint — both services give you a copy-paste snippet for this
-   on their dashboard after signup. It's usually 5–6 lines.
-4. Test by submitting the form yourself and checking your inbox.
+> Note: the JSON override only loads when the site is served over http(s) (e.g. GitHub
+> Pages). Opening `index.html` directly from disk (`file://`) skips it and uses the
+> built-in defaults — that's expected.
 
-Until this is connected, treat the "Request a quote" form as decorative — make sure
-your email/phone in the footer are correct so people can always reach you directly.
+## Deploying on GitHub Pages (free)
 
-## Gallery captions — please review
+1. In the GitHub repo: **Settings → Pages → Build and deployment → Deploy from a branch**,
+   select `main` / root, save.
+2. Your site goes live at `https://<user>.github.io/<repo>/`. Add a custom domain under
+   the same Pages settings if you have one.
 
-A few of the uploaded photos showed third-party brand names on the unit's front panel
-(from past activations). Since we hadn't confirmed those clients can be named publicly,
-the brand names were blurred out of two photos and the gallery captions were written
-generically ("brand activation", "trade-show booth") rather than naming the companies.
-If you have permission to credit specific past clients, swap in the un-blurred photos
-and update the captions/use-case copy — it'll make the portfolio stronger.
+## Contact form
 
-Note: the "Festivals & entertainment" use-case photo still shows a "Space Lab" wordmark
-on the unit's lower panel (from an earlier branding). Let me know if that should be
-blurred too, or if it's fine since it's your own prior brand.
+The form posts to **Formspree** at `https://formspree.io/f/xdarebzr` (set in both the
+`<form action>` and the `fetch()` call). Make sure that form ID belongs to your Formspree
+account and that the destination email is verified. Required fields: name, email, phone,
+event type, and the privacy-consent checkbox.
 
-## Changelog — latest round of edits
+## GDPR / legal
 
-- Removed all alcohol-licensing language site-wide (per request) — the "no license
-  needed" point, the related FAQ entry, and the "no license paperwork" hero phrase.
-- Replaced the static hero photo with a cinematic night video loop (with a poster-image
-  fallback on mobile and if JS/video fails).
-- Added the **Process** section ("Three stages, start to finish") and a full **Pricing**
-  section (what's included, day-rate cards, and the agency referral program), based on
-  the details you provided in chat.
-- Reworked the **Concept** section: swapped the licensing point for "battery-powered —
-  goes anywhere" and added a "built-in marketing tools" point (QR codes / surveys /
-  social-follow-gated pours).
-- Updated **Use cases** to four categories matching your "who it's for" list: Weddings &
-  private events, Corporate events (Fintech/Telecom/IT galas), Brand activations, and
-  Festivals & entertainment.
-- Updated the **Regions** spec card to reflect battery power instead of a 230V socket,
-  and added "San Sebastián" as the named home base.
-- Added two new FAQ entries (what's included in the price, the referral program) and a
-  "does it need to be plugged in" entry to replace the old power-socket one.
+- A cookie-consent banner appears on first visit (Accept all / Reject optional); the
+  choice is stored locally. The "Reset cookie preferences" button on the Cookie Policy
+  page clears it.
+- Privacy Policy, Cookie Policy and Terms are linked in the footer and from the form's
+  consent checkbox. They reference the data controller details you provided
+  (Vladislavo Lysenko, NIE Z3859460L, San Sebastián).
+- The site uses Google Fonts and flagcdn.com (flag images), which receive visitors' IPs
+  as a technical necessity — this is disclosed in the policies. For maximum strictness you
+  could later self-host the fonts and flag images to avoid those third-party requests.
 
+## To review before going live
 
-## Deployment
-
-See the deployment instructions provided in chat for step-by-step hosting and domain
-setup (Netlify, custom domain, DNS).
+- **Phone number mismatch:** the public contact/footer shows `+34 722 166 551`, but your
+  legal details list `+34 722 492 884`. The legal pages use the legal number; the public
+  pages keep the original. Tell me if you want them unified.
+- `hello@roboticsbartender.com` and the `@roboticsbartender` social handle are still
+  placeholders — update them in `index.html` (contact section + footer).
+- Gallery photo "Garden backdrop" / others: confirm any third-party branding on the unit
+  is cleared for public display.

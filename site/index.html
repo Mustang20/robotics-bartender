@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Robotics Bartender — Robotic Bar Service for Weddings, Brand Activations & Private Events</title>
-<meta name="description" content="A robotic arm that pours and serves drinks at your event — weddings, corporate activations, exhibitions and private parties across Spain, France, Germany and Italy. Battery-powered or mains, customizable, and built to be the centerpiece of the room.">
+<title>Robotics Bartender — A Robotic Bar That Becomes the Moment of Your Event</title>
+<meta name="description" content="A robotic arm that takes center stage at weddings, brand activations and luxury events across Spain and Europe. Cinematic precision, shareable spectacle, your brand for the night.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,7 +108,8 @@
     color:var(--text-light); letter-spacing:-0.01em;
   }
   .brand small{display:block; font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:var(--text-light-dim); letter-spacing:.1em; font-weight:400;}
-  .navlinks{display:flex; align-items:center; gap:30px;}
+  .nav-right{display:flex; align-items:center; gap:24px;}
+  .navlinks{display:flex; align-items:center; gap:26px;}
   .navlinks a{
     font-size:14px; color:#fff; font-weight:500;
     transition:color .15s ease;
@@ -120,7 +121,17 @@
   }
   .nav-toggle{display:none; background:none; border:none; color:var(--text-light); font-size:26px;}
 
-  @media (max-width:860px){
+  /* language switch */
+  .lang-switch{display:flex; align-items:center; gap:4px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); border-radius:999px; padding:3px;}
+  .lang-btn{
+    display:flex; align-items:center; gap:6px; background:transparent; border:none; border-radius:999px;
+    padding:5px 9px; font-size:12.5px; font-weight:600; color:var(--text-light-dim); font-family:'Inter',sans-serif;
+    transition:background .15s ease, color .15s ease;
+  }
+  .lang-btn img{width:18px; height:13px; object-fit:cover; border-radius:2px; display:block;}
+  .lang-btn.active{background:var(--turquoise); color:#062523;}
+
+  @media (max-width:980px){
     .navlinks{
       position:fixed; inset:64px 0 0 0; background:var(--ink); flex-direction:column;
       justify-content:flex-start; padding:40px 28px; gap:26px;
@@ -143,8 +154,8 @@
   .hero::after{
     content:""; position:absolute; inset:0;
     background:
-      linear-gradient(100deg, rgba(6,11,13,0.82) 0%, rgba(6,11,13,0.5) 38%, rgba(6,11,13,0.1) 62%, transparent 78%),
-      linear-gradient(180deg, rgba(8,14,16,0.18) 0%, rgba(8,14,16,0.1) 30%, rgba(7,12,14,0.95) 100%);
+      linear-gradient(100deg, rgba(6,11,13,0.86) 0%, rgba(6,11,13,0.55) 38%, rgba(6,11,13,0.12) 62%, transparent 80%),
+      linear-gradient(180deg, rgba(8,14,16,0.2) 0%, rgba(8,14,16,0.1) 30%, rgba(7,12,14,0.96) 100%);
   }
   .hero-content{
     position:relative; z-index:2; width:100%;
@@ -152,15 +163,15 @@
   }
   .hero-content .eyebrow{color:var(--turquoise-glow); margin-bottom:22px;}
   .hero h1{
-    color:#fff; font-size:clamp(38px, 6vw, 74px); line-height:1.02; font-weight:700;
-    max-width:820px;
+    color:#fff; font-size:clamp(40px, 6.4vw, 80px); line-height:1.0; font-weight:700;
+    max-width:880px;
   }
   .hero h1 em{
     font-style:normal; color:var(--turquoise-glow);
   }
   .hero p.sub{
-    color:var(--text-light-dim); font-size:clamp(16px,2vw,19px); max-width:560px;
-    margin:22px 0 34px; line-height:1.5;
+    color:#cfe4e0; font-size:clamp(16px,2vw,20px); max-width:600px;
+    margin:24px 0 36px; line-height:1.55;
   }
   .hero-actions{display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
   .hero-actions .btn-ghost{
@@ -174,7 +185,7 @@
     background:rgba(8,14,16,0.45);
   }
   .hero-regions{
-    margin-top:40px; display:flex; gap:24px; flex-wrap:wrap;
+    margin-top:42px; display:flex; gap:24px; flex-wrap:wrap;
     font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.06em;
     color:var(--text-light-dim);
   }
@@ -215,53 +226,6 @@
     .concept-grid img{height:340px;}
   }
 
-  /* ---------- HOW IT WORKS ---------- */
-  .panel{
-    background:var(--ink-soft); border:1px solid var(--ink-edge);
-    border-radius:20px; padding:46px 40px; position:relative; overflow:hidden;
-  }
-  .panel::before{
-    content:""; position:absolute; left:0; right:0; bottom:0; height:6px;
-    background:linear-gradient(90deg, transparent, var(--turquoise), transparent);
-    opacity:.5;
-  }
-  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:10px;}
-  .step{
-    padding:0 22px; position:relative;
-  }
-  .step + .step{border-left:1px dashed rgba(234,246,244,0.14);}
-  .btn-led{
-    width:46px; height:46px; border-radius:50%;
-    background:radial-gradient(circle at 35% 30%, #0E2C2A, #062120 70%);
-    border:1px solid rgba(111,240,226,0.4);
-    box-shadow:0 0 0 5px rgba(0,194,179,0.06), inset 0 0 10px rgba(0,194,179,0.25);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'IBM Plex Mono',monospace; color:var(--turquoise-glow); font-size:13px; font-weight:500;
-    margin-bottom:22px;
-    animation:pulse-led 3.2s ease-in-out infinite;
-  }
-  .step:nth-child(2) .btn-led{animation-delay:.4s;}
-  .step:nth-child(3) .btn-led{animation-delay:.8s;}
-  .step:nth-child(4) .btn-led{animation-delay:1.2s;}
-  @keyframes pulse-led{
-    0%,100%{box-shadow:0 0 0 5px rgba(0,194,179,0.06), inset 0 0 10px rgba(0,194,179,0.25);}
-    50%{box-shadow:0 0 0 8px rgba(0,194,179,0.14), inset 0 0 16px rgba(0,194,179,0.55);}
-  }
-  .step h4{color:var(--text-light); font-size:16px; font-weight:600; margin-bottom:8px;}
-  .step p{color:var(--text-light-dim); font-size:14px; line-height:1.55; margin:0;}
-  @media (max-width:860px){
-    .steps{grid-template-columns:1fr; gap:36px;}
-    .step + .step{border-left:none; padding-top:30px; border-top:1px dashed rgba(234,246,244,0.14);}
-  }
-
-  .how-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;}
-  .how-video{
-    border-radius:18px; overflow:hidden; border:1px solid var(--ink-edge);
-    max-width:340px; margin:0 auto;
-  }
-  .how-video video{width:100%; display:block;}
-  @media (max-width:880px){ .how-grid{grid-template-columns:1fr;} }
-
   /* ---------- USE CASES ---------- */
   .cases{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
   .case-card{
@@ -279,14 +243,58 @@
   @media (max-width:980px){ .cases{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:560px){ .cases{grid-template-columns:1fr;} }
 
+  /* ---------- EXPERIENCE ---------- */
+  .exp-grid{display:grid; grid-template-columns:0.95fr 1.05fr; gap:60px; align-items:center;}
+  .exp-video{
+    border-radius:18px; overflow:hidden; border:1px solid var(--ink-edge);
+    position:relative; box-shadow:0 30px 70px -30px rgba(0,0,0,0.8);
+  }
+  .exp-video video{width:100%; display:block;}
+  .exp-values{display:flex; flex-direction:column; gap:14px;}
+  .value-card{
+    border:1px solid var(--ink-edge); border-radius:14px; padding:22px 24px;
+    background:rgba(255,255,255,0.02); transition:border-color .25s ease, background .25s ease, transform .25s ease;
+  }
+  .value-card:hover{border-color:rgba(111,240,226,0.4); background:rgba(0,194,179,0.05); transform:translateX(4px);}
+  .value-card h4{color:var(--text-light); font-size:17px; font-weight:600; margin-bottom:8px; display:flex; align-items:center; gap:11px;}
+  .value-card h4 .vc-ic{
+    flex:none; width:30px; height:30px; border-radius:8px; background:rgba(0,194,179,0.12);
+    border:1px solid rgba(0,194,179,0.35); display:flex; align-items:center; justify-content:center;
+    color:var(--turquoise-glow); font-family:'IBM Plex Mono',monospace; font-size:13px;
+  }
+  .value-card p{color:var(--text-light-dim); font-size:14.5px; line-height:1.6; margin:0;}
+  @media (max-width:880px){ .exp-grid{grid-template-columns:1fr; gap:40px;} }
+
   /* ---------- PROCESS ---------- */
+  .panel-frame{
+    background:var(--ink-soft); border:1px solid var(--ink-edge);
+    border-radius:20px; padding:46px 40px; position:relative; overflow:hidden;
+  }
+  .panel-frame::before{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:6px;
+    background:linear-gradient(90deg, transparent, var(--turquoise), transparent);
+    opacity:.5;
+  }
   .process-steps{display:grid; grid-template-columns:repeat(3,1fr); gap:34px;}
-  .process-step .btn-led{margin-bottom:20px;}
+  .btn-led{
+    width:46px; height:46px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #0E2C2A, #062120 70%);
+    border:1px solid rgba(111,240,226,0.4);
+    box-shadow:0 0 0 5px rgba(0,194,179,0.06), inset 0 0 10px rgba(0,194,179,0.25);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; color:var(--turquoise-glow); font-size:13px; font-weight:500;
+    margin-bottom:20px;
+    animation:pulse-led 3.2s ease-in-out infinite;
+  }
+  .process-step:nth-child(2) .btn-led{animation-delay:.4s;}
+  .process-step:nth-child(3) .btn-led{animation-delay:.8s;}
+  @keyframes pulse-led{
+    0%,100%{box-shadow:0 0 0 5px rgba(0,194,179,0.06), inset 0 0 10px rgba(0,194,179,0.25);}
+    50%{box-shadow:0 0 0 8px rgba(0,194,179,0.14), inset 0 0 16px rgba(0,194,179,0.55);}
+  }
   .process-step h4{color:var(--text-light); font-size:17px; font-weight:600; margin-bottom:9px;}
   .process-step p{color:var(--text-light-dim); font-size:14.5px; line-height:1.6; margin:0;}
-  @media (max-width:760px){
-    .process-steps{grid-template-columns:1fr; gap:36px;}
-  }
+  @media (max-width:760px){ .process-steps{grid-template-columns:1fr; gap:36px;} }
 
   /* ---------- GALLERY ---------- */
   .gallery{
@@ -312,11 +320,11 @@
     .gallery{grid-template-columns:1fr; grid-auto-rows:220px;}
     .g-wide,.g-tall{grid-column:span 1; grid-row:span 1;}
   }
-
   .gallery-note{
     margin-top:22px; font-size:13.5px; color:var(--steel); font-family:'IBM Plex Mono',monospace;
     line-height:1.6;
   }
+  section.on-dark .gallery-note{color:var(--text-light-dim);}
 
   /* ---------- REGIONS ---------- */
   .regions-wrap{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
@@ -326,22 +334,21 @@
     padding:20px 0; border-bottom:1px solid var(--ink-edge);
     font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:600;
   }
+  .region-list li em{font-style:normal;}
   .region-list li span{
     font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-light-dim); font-weight:400;
   }
   .region-list li.base span{color:var(--turquoise-glow);}
   .region-note{color:var(--text-light-dim); font-size:15px; line-height:1.65; margin-top:26px;}
   .region-note b{color:var(--text-light);}
-
-  .specs{
-    display:grid; grid-template-columns:repeat(2,1fr); gap:18px;
-  }
+  .specs{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
   .spec{
     border:1px solid var(--ink-edge); border-radius:12px; padding:20px;
     background:rgba(255,255,255,0.02);
   }
   .spec .v{font-family:'Space Grotesk',sans-serif; font-size:24px; color:var(--turquoise-glow); font-weight:700;}
   .spec .k{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--text-light-dim); margin-top:6px; letter-spacing:.05em; text-transform:uppercase;}
+  @media (max-width:880px){ .regions-wrap{grid-template-columns:1fr; gap:40px;} }
 
   /* ---------- FAQ ---------- */
   .faq-item{border-bottom:1px solid var(--paper-dim);}
@@ -388,14 +395,15 @@
   select option{color:var(--text-dark); background:#fff;}
   .form-submit{margin-top:6px; align-self:flex-start;}
   .form-foot{font-size:12.5px; color:var(--text-light-dim); margin-top:4px;}
+  .form-consent{display:flex; gap:10px; align-items:flex-start; font-size:12.5px; color:var(--text-light-dim); line-height:1.5;}
+  .form-consent input{width:auto; flex:none; margin-top:2px;}
+  .form-consent a{color:var(--turquoise-glow); text-decoration:underline;}
 
   /* phone wrap */
-  .phone-wrap{display:flex; gap:0; border:1px solid var(--ink-edge); border-radius:10px; overflow:visible; background:rgba(255,255,255,0.04); transition:border-color .2s ease, background .2s ease; position:relative;}
+  .phone-wrap{display:flex; gap:0; border:1px solid var(--ink-edge); border-radius:10px; background:rgba(255,255,255,0.04); transition:border-color .2s ease, background .2s ease; position:relative;}
   .phone-wrap:focus-within{border-color:var(--turquoise); background:rgba(0,194,179,0.06);}
   .phone-wrap > input{border:none; border-radius:0 10px 10px 0; background:transparent; flex:1; min-width:0;}
   .phone-wrap > input:focus{outline:none; background:transparent;}
-
-  /* searchable country code selector */
   .cc-select{position:relative; flex:none;}
   .cc-trigger{
     display:flex; align-items:center; gap:6px; height:100%; min-height:48px;
@@ -409,40 +417,28 @@
   .cc-dropdown{
     position:absolute; top:calc(100% + 6px); left:0; z-index:300;
     background:var(--ink-soft); border:1px solid var(--ink-edge); border-radius:12px;
-    width:240px; overflow:hidden;
-    box-shadow:0 16px 40px -8px rgba(0,0,0,0.6);
-    display:none;
+    width:240px; overflow:hidden; box-shadow:0 16px 40px -8px rgba(0,0,0,0.6); display:none;
   }
   .cc-select.open .cc-dropdown{display:block;}
   .cc-search{
     width:100%; border:none; border-bottom:1px solid var(--ink-edge); border-radius:0;
-    background:rgba(255,255,255,0.03); padding:11px 14px; color:var(--text-light);
-    font-size:13.5px; font-family:'Inter',sans-serif;
+    background:rgba(255,255,255,0.03); padding:11px 14px; color:var(--text-light); font-size:13.5px; font-family:'Inter',sans-serif;
   }
   .cc-search::placeholder{color:#5d7470;}
   .cc-search:focus{outline:none; background:rgba(0,194,179,0.05);}
   .cc-list{list-style:none; margin:0; padding:4px 0; max-height:210px; overflow-y:auto;}
   .cc-list::-webkit-scrollbar{width:4px;}
-  .cc-list::-webkit-scrollbar-track{background:transparent;}
   .cc-list::-webkit-scrollbar-thumb{background:var(--ink-edge); border-radius:4px;}
-  .cc-opt{
-    display:flex; align-items:center; gap:10px; padding:9px 14px;
-    cursor:pointer; font-size:13.5px; color:var(--text-light-dim);
-    transition:background .1s ease;
-  }
+  .cc-opt{display:flex; align-items:center; gap:10px; padding:9px 14px; cursor:pointer; font-size:13.5px; color:var(--text-light-dim); transition:background .1s ease;}
   .cc-opt:hover,.cc-opt.highlighted{background:rgba(0,194,179,0.1); color:var(--text-light);}
   .cc-opt .cn{flex:1; font-size:13px;}
   .cc-opt .ck{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--turquoise-glow); flex:none;}
   .cc-empty{padding:14px; font-size:13px; color:var(--text-light-dim); text-align:center;}
   .cc-flag{width:21px; height:15px; object-fit:cover; border-radius:2px; flex:none; display:block; box-shadow:0 0 0 1px rgba(255,255,255,0.12);}
 
-  /* date split field */
   .date-wrap{display:flex; align-items:center; gap:0; border:1px solid var(--ink-edge); border-radius:10px; overflow:hidden; background:rgba(255,255,255,0.04); transition:border-color .2s ease, background .2s ease;}
   .date-wrap:focus-within{border-color:var(--turquoise); background:rgba(0,194,179,0.06);}
-  .date-wrap input{
-    border:none; border-radius:0; background:transparent; text-align:center;
-    padding:13px 6px; flex:none;
-  }
+  .date-wrap input{border:none; border-radius:0; background:transparent; text-align:center; padding:13px 6px; flex:none;}
   .date-wrap input:focus{outline:none; background:transparent;}
   .date-wrap input.d-day{width:52px;}
   .date-wrap input.d-mon{width:52px;}
@@ -453,16 +449,6 @@
     .contact-wrap{grid-template-columns:1fr; gap:44px;}
     .form-row{grid-template-columns:1fr;}
   }
-
-  /* ---------- REFERRAL ---------- */
-  .referral-banner{
-    border-radius:18px; border:1px solid var(--paper-dim);
-    background:linear-gradient(135deg, rgba(0,194,179,0.08), rgba(0,194,179,0.01));
-    padding:40px 44px; display:flex; justify-content:space-between; align-items:center; gap:34px; flex-wrap:wrap;
-  }
-  .referral-banner h3{font-family:'Space Grotesk',sans-serif; font-size:clamp(22px,3vw,30px); font-weight:600; margin-top:6px;}
-  .referral-banner p{color:var(--steel); font-size:15.5px; margin-top:12px; max-width:540px; line-height:1.6;}
-  @media (max-width:880px){ .referral-banner{padding:30px; } }
 
   /* ---------- FOOTER ---------- */
   footer{background:#070D0F; padding:60px 0 30px; color:var(--text-light-dim);}
@@ -478,6 +464,22 @@
   .js .reveal.in{opacity:1; transform:translateY(0);}
 
   ::selection{background:var(--turquoise); color:#062523;}
+
+  /* ---------- COOKIE BANNER ---------- */
+  .cookie-banner{
+    position:fixed; left:18px; right:18px; bottom:18px; z-index:400;
+    max-width:760px; margin:0 auto;
+    background:var(--ink-soft); border:1px solid var(--ink-edge); border-radius:16px;
+    padding:22px 24px; box-shadow:0 20px 50px -15px rgba(0,0,0,0.7);
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .cookie-banner p{margin:0; font-size:13.5px; color:var(--text-light-dim); line-height:1.55; flex:1; min-width:240px;}
+  .cookie-banner p a{color:var(--turquoise-glow); text-decoration:underline;}
+  .cookie-actions{display:flex; gap:10px; flex-wrap:wrap;}
+  .cookie-actions .btn{padding:11px 20px; font-size:13.5px;}
+  .cookie-actions .btn-ghost{border-color:rgba(234,246,244,0.25); color:var(--text-light);}
+  .cookie-actions .btn-ghost:hover{border-color:var(--turquoise-glow); color:var(--turquoise-glow);}
+  @media (max-width:560px){ .cookie-banner{flex-direction:column; align-items:stretch;} .cookie-actions .btn{flex:1; justify-content:center;} }
 </style>
 </head>
 <body>
@@ -486,38 +488,43 @@
   <nav>
     <a class="brand" href="#home">
       <img src="assets/img/logo-white.png" alt="Robotics Bartender logo">
-      <span>Robotics Bartender<small>ROBOTIC BAR SERVICE</small></span>
+      <span>Robotics Bartender<small data-i18n="brand.tag">ROBOTIC BAR SERVICE</small></span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
-    <div class="navlinks" id="navLinks">
-      <a href="#concept">Concept</a>
-      <a href="#how">How it works</a>
-      <a href="#cases">Use cases</a>
-      <a href="#process">Process</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#regions">Where we go</a>
-      <a href="#referral">Partners</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact" class="nav-cta">Request a quote</a>
+    <div class="nav-right">
+      <div class="navlinks" id="navLinks">
+        <a href="#concept" data-i18n="nav.concept">Concept</a>
+        <a href="#cases" data-i18n="nav.cases">Use cases</a>
+        <a href="#experience" data-i18n="nav.experience">The experience</a>
+        <a href="#process" data-i18n="nav.process">Process</a>
+        <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+        <a href="#regions" data-i18n="nav.regions">Where we go</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="#contact" class="nav-cta" data-i18n="nav.cta">Request a quote</a>
+      </div>
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/w40/gb.png" alt="English">EN</button>
+        <button class="lang-btn" data-lang="es"><img src="https://flagcdn.com/w40/es.png" alt="Español">ES</button>
+      </div>
     </div>
   </nav>
 </header>
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="home">
-  <img class="hero-img" src="assets/img/hero-wedding.jpg" alt="Guest receiving a glass poured by a robotic arm at an outdoor event">
+  <img class="hero-img" data-img="hero" src="assets/img/hero-wedding.jpg" alt="A robotic arm serving a glass to a guest at a luxury event">
   <div class="hero-content">
-    <div class="eyebrow">ROBOTIC BAR · WEDDINGS · BRAND ACTIVATIONS · EXHIBITIONS</div>
-    <h1>One arm.<br>Zero spills.<br><em>Every glass on cue.</em></h1>
-    <p class="sub">Robotics Bartender brings a precision robotic arm to your event — guests press a button, the robot pours. No bartender shortage, no inconsistent pours, no fuss: you bring the drinks, we bring the show.</p>
+    <div class="eyebrow" data-i18n="hero.eyebrow">ROBOTIC BAR · WEDDINGS · BRAND ACTIVATIONS · LUXURY EVENTS</div>
+    <h1 data-i18n-html="hero.title">Your event,<br>the moment<br><em>everyone films.</em></h1>
+    <p class="sub" data-i18n="hero.sub">A robotic arm takes the floor — pouring with cinematic precision as your guests gather, film and share. It isn't a bar. It's the centerpiece they'll be talking about long after the last glass.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary">Request a quote →</a>
-      <a href="#how" class="btn btn-ghost">See how it works</a>
+      <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Request a quote →</a>
+      <a href="#experience" class="btn btn-ghost" data-i18n="hero.cta2">See it in action</a>
     </div>
     <div class="hero-regions">
-      <div><b>Based in Spain</b> · available nationwide</div>
-      <div>Touring <b>France · Germany · Italy</b></div>
-      <div>Further afield <b>on request</b></div>
+      <div data-i18n-html="hero.r1"><b>Based in San Sebastián</b> · available nationwide</div>
+      <div data-i18n-html="hero.r2">Touring <b>France · Germany · Italy</b></div>
+      <div data-i18n-html="hero.r3">Further afield <b>on request</b></div>
     </div>
   </div>
   <div class="scroll-cue"></div>
@@ -527,66 +534,23 @@
 <section id="concept">
   <div class="wrap">
     <div class="concept-grid reveal">
-      <img src="assets/img/toast-guest.jpg" alt="Guest toasting with a glass poured by the robotic bartender at an outdoor terrace event" loading="lazy">
+      <img data-img="concept" src="assets/img/toast-guest.jpg" alt="Guest toasting with a glass poured by the robotic bartender at a terrace event" loading="lazy">
       <div>
-        <div class="eyebrow">THE CONCEPT</div>
-        <h2 style="margin-top:18px; font-size:clamp(28px,3.6vw,40px);">A robotic arm that serves — you supply the drinks, we supply the precision.</h2>
-        <p style="color:var(--steel); font-size:15.5px; margin-top:14px; line-height:1.6;">We call the system <b>Robobar</b> — a precision robotic arm built to be the centerpiece of the room, not just the bar.</p>
+        <div class="eyebrow" data-i18n="concept.eyebrow">THE CONCEPT</div>
+        <h2 style="margin-top:18px; font-size:clamp(28px,3.6vw,40px);" data-i18n="concept.h2">A robotic arm that serves — you supply the drinks, we supply the spectacle.</h2>
+        <p style="color:var(--steel); font-size:15.5px; margin-top:14px; line-height:1.6;" data-i18n-html="concept.lead">We call the system <b>Robobar</b> — a precision robotic arm built to be the centerpiece of the room, not just the bar.</p>
         <div class="concept-points">
           <div class="point">
             <div class="point-mark">01</div>
-            <div><h4>Champagne, wine, spirits or mocktails</h4><p>The arm handles bottles, pours into flutes, glasses or shot glasses, and repeats the exact same motion every time — whatever you're serving, the pour is identical, glass after glass.</p></div>
+            <div><h4 data-i18n="concept.p1h">Champagne, wine, spirits or mocktails</h4><p data-i18n="concept.p1p">The arm handles bottles, pours into flutes, glasses or shot glasses, and repeats the exact same motion every time — whatever you're serving, the pour is identical, glass after glass.</p></div>
           </div>
           <div class="point">
             <div class="point-mark">02</div>
-            <div><h4>Battery or mains — goes anywhere</h4><p>Robobar runs on battery for full off-grid freedom, or plugs into a standard 230V socket when one's nearby. Set it up on the lawn, the rooftop, or the show floor — wherever the event actually is.</p></div>
+            <div><h4 data-i18n="concept.p2h">Battery or mains — goes anywhere</h4><p data-i18n="concept.p2p">Robobar runs on battery for full off-grid freedom, or plugs into a standard 230V socket when one's nearby. Set it up on the lawn, the rooftop or the show floor — wherever the event actually is.</p></div>
           </div>
           <div class="point">
             <div class="point-mark">03</div>
-            <div><h4>Built-in marketing tools</h4><p>Gate each pour behind a QR code, a short survey, or a follow on your event's social account — guests get a drink, you get a lead or a new follower.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= HOW IT WORKS ================= -->
-<section class="on-dark" id="how">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">HOW IT WORKS</div>
-      <h2>Press a button. Watch it pour.</h2>
-      <p>Every unit ships with an illuminated control panel. Each lit button is mapped to a drink — guests choose, the arm does the rest with the same repeatable motion every single time.</p>
-    </div>
-
-    <div class="how-grid reveal">
-      <div class="how-video">
-        <video autoplay muted loop playsinline poster="assets/img/pour-closeup-2.jpg">
-          <source src="assets/img/demo-pour.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="panel">
-        <div class="steps">
-          <div class="step">
-            <div class="btn-led">01</div>
-            <h4>Choose</h4>
-            <p>The guest presses the illuminated button for their drink of choice on the control panel.</p>
-          </div>
-          <div class="step">
-            <div class="btn-led">02</div>
-            <h4>Lock on</h4>
-            <p>The arm selects the right bottle from its mounts and aligns with an empty glass on the tray.</p>
-          </div>
-          <div class="step">
-            <div class="btn-led">03</div>
-            <h4>Pour</h4>
-            <p>A precise, consistent pour — the same measure and angle, every single glass, no overflow.</p>
-          </div>
-          <div class="step">
-            <div class="btn-led">04</div>
-            <h4>Serve</h4>
-            <p>Glass ready to lift straight off the tray. The arm resets and waits for the next press.</p>
+            <div><h4 data-i18n="concept.p3h">Built-in marketing tools</h4><p data-i18n="concept.p3p">Gate each pour behind a QR code, a short survey or a follow on your event's social account — guests get a drink, you get a lead or a new follower.</p></div>
           </div>
         </div>
       </div>
@@ -598,54 +562,92 @@
 <section id="cases">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">USE CASES</div>
-      <h2>Built for the moments that need a wow factor.</h2>
-      <p>The same arm, restyled and rebriefed for the room it's working in — from a wedding welcome table to a trade-show booth.</p>
+      <div class="eyebrow" data-i18n="cases.eyebrow">USE CASES</div>
+      <h2 data-i18n="cases.h2">Built for the moments that need a wow factor.</h2>
+      <p data-i18n="cases.p">The same arm, restyled and rebriefed for the room it's working in — from a wedding welcome table to a trade-show booth.</p>
     </div>
     <div class="cases reveal">
       <div class="case-card">
         <img src="assets/img/pour-flutes.jpg" alt="Robotic arm pouring champagne into flutes at a wedding" loading="lazy">
-        <div class="case-overlay"><div class="tag">CEREMONY & RECEPTION</div><h4>Weddings &amp; private events</h4></div>
+        <div class="case-overlay"><div class="tag" data-i18n="cases.c1tag">CEREMONY & RECEPTION</div><h4 data-i18n="cases.c1h">Weddings & private events</h4></div>
       </div>
       <div class="case-card">
-        <img src="assets/img/lancome-event.jpg" alt="Robotic bar customized with brand panel at a corporate event" loading="lazy">
-        <div class="case-overlay"><div class="tag">FINTECH · TELECOM · IT GALAS</div><h4>Corporate events</h4></div>
+        <img src="assets/img/lancome-event.jpg" alt="Robotic bar customized with a brand panel at a corporate event" loading="lazy">
+        <div class="case-overlay"><div class="tag" data-i18n="cases.c2tag">FINTECH · TELECOM · IT GALAS</div><h4 data-i18n="cases.c2h">Corporate events</h4></div>
       </div>
       <div class="case-card">
-        <img src="assets/img/nextiva-menu.jpg" alt="Robotic bar with touchscreen drink menu at a brand activation booth" loading="lazy">
-        <div class="case-overlay"><div class="tag">LAUNCHES & TRADE SHOWS</div><h4>Brand activations</h4></div>
+        <img src="assets/img/nextiva-menu.jpg" alt="Robotic bar with a touchscreen drink menu at a brand activation booth" loading="lazy">
+        <div class="case-overlay"><div class="tag" data-i18n="cases.c3tag">LAUNCHES & TRADE SHOWS</div><h4 data-i18n="cases.c3h">Brand activations</h4></div>
       </div>
       <div class="case-card">
-        <img src="assets/img/donjulio-suite.jpg" alt="Robotic bar serving shots in an elegant private suite" loading="lazy">
-        <div class="case-overlay"><div class="tag">CELEBRATIONS</div><h4>Private parties</h4></div>
+        <img src="assets/img/donjulio-suite.jpg" alt="Robotic bar serving in an elegant private suite" loading="lazy">
+        <div class="case-overlay"><div class="tag" data-i18n="cases.c4tag">CELEBRATIONS</div><h4 data-i18n="cases.c4h">Private parties</h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="on-dark" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" data-i18n="exp.eyebrow">THE EXPERIENCE</div>
+      <h2 data-i18n="exp.h2">More than a drink. A moment worth sharing.</h2>
+      <p data-i18n="exp.p">Robobar turns serving into a show — and a show into content, conversation and a brand people remember.</p>
+    </div>
+    <div class="exp-grid reveal">
+      <div class="exp-video">
+        <video autoplay muted loop playsinline poster="assets/img/pour-closeup-2.jpg">
+          <source src="assets/img/demo-pour.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="exp-values">
+        <div class="value-card">
+          <h4><span class="vc-ic">★</span><span data-i18n="exp.v1h">A magnet for the room</span></h4>
+          <p data-i18n="exp.v1p">The arm draws a crowd the second it moves. Guests gather, phones come out, and your event has its signature moment — the one people remember and retell.</p>
+        </div>
+        <div class="value-card">
+          <h4><span class="vc-ic">↗</span><span data-i18n="exp.v2h">Content that travels</span></h4>
+          <p data-i18n="exp.v2p">Every pour is a clip worth posting. Your event — and your brand — keeps spreading across stories and feeds long after the night ends.</p>
+        </div>
+        <div class="value-card">
+          <h4><span class="vc-ic">◎</span><span data-i18n="exp.v3h">Flawless, all night long</span></h4>
+          <p data-i18n="exp.v3p">The same cinematic, repeatable motion for the first guest and the five-hundredth. No queues at a tired bar, no off pours, no spills — just consistency that looks effortless.</p>
+        </div>
+        <div class="value-card">
+          <h4><span class="vc-ic">✦</span><span data-i18n="exp.v4h">Yours for the night</span></h4>
+          <p data-i18n="exp.v4p">Wrap it in your colours, map the menu to your drinks, theme the lighting to your brand. For one night, the showpiece of the room is entirely yours.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================= PROCESS ================= -->
-<section class="on-dark" id="process">
+<section id="process">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">HOW WE WORK TOGETHER</div>
-      <h2>Three stages, start to finish.</h2>
-      <p>From first call to last call, here's exactly what happens between booking Robobar and seeing it pour at your event.</p>
+      <div class="eyebrow" data-i18n="process.eyebrow">HOW WE WORK TOGETHER</div>
+      <h2 data-i18n="process.h2">Three stages, start to finish.</h2>
+      <p data-i18n="process.p">From first call to last call, here's exactly what happens between booking Robobar and seeing it pour at your event.</p>
     </div>
-    <div class="process-steps reveal">
-      <div class="process-step">
-        <div class="btn-led">01</div>
-        <h4>Concept alignment</h4>
-        <p>We build a custom drink menu, design the bar setup, and map out a lead-generation workflow tailored to your brand.</p>
-      </div>
-      <div class="process-step">
-        <div class="btn-led">02</div>
-        <h4>Programming &amp; preparation</h4>
-        <p>Full robot programming, system configuration, and complete testing at our facilities — before anything reaches your venue.</p>
-      </div>
-      <div class="process-step">
-        <div class="btn-led">03</div>
-        <h4>Installation &amp; launch</h4>
-        <p>We deliver, set up on site, and our engineer provides full technical support throughout the entire event.</p>
+    <div class="panel-frame reveal">
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="btn-led">01</div>
+          <h4 data-i18n="process.s1h">Concept alignment</h4>
+          <p data-i18n="process.s1p">We build a custom drink menu, design the bar setup, and map out a lead-generation workflow tailored to your brand.</p>
+        </div>
+        <div class="process-step">
+          <div class="btn-led">02</div>
+          <h4 data-i18n="process.s2h">Programming & preparation</h4>
+          <p data-i18n="process.s2p">Full robot programming, system configuration and complete testing at our facilities — before anything reaches your venue.</p>
+        </div>
+        <div class="process-step">
+          <div class="btn-led">03</div>
+          <h4 data-i18n="process.s3h">Installation & launch</h4>
+          <p data-i18n="process.s3p">We deliver, set up on site, and our engineer provides full technical support throughout the entire event.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -655,20 +657,20 @@
 <section class="on-dark" id="gallery">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">PREVIEW GALLERY</div>
-      <h2>The arm, in the field.</h2>
-      <p>A look at the robot and its control panel across different settings and brand finishes — a preview of the experience your guests will get.</p>
+      <div class="eyebrow" data-i18n="gallery.eyebrow">PREVIEW GALLERY</div>
+      <h2 data-i18n="gallery.h2">The arm, in the field.</h2>
+      <p data-i18n="gallery.p">A look at the robot and its control panel across different settings and brand finishes — a preview of the experience your guests will get.</p>
     </div>
     <div class="gallery reveal">
-      <figure class="g-tall"><img src="assets/img/arm-back-brick.jpg" loading="lazy" alt="Robotic arm seen from behind on a terrace bar"><figcaption>Terrace setup · brick backdrop</figcaption></figure>
-      <figure class="g-wide"><img src="assets/img/terrace-glasses.jpg" loading="lazy" alt="Champagne flutes lined up on the robotic bar tray"><figcaption>Flute tray · ready to pour</figcaption></figure>
-      <figure><img src="assets/img/pour-closeup-1.jpg" loading="lazy" alt="Close-up of the robotic arm gripping a champagne bottle"><figcaption>Precision grip</figcaption></figure>
-      <figure><img src="assets/img/donjulio-suite.jpg" loading="lazy" alt="Robotic bar serving shots in an elegant private suite"><figcaption>Indoor private suite</figcaption></figure>
-      <figure class="g-wide"><img src="assets/img/glasses-sunset.jpg" loading="lazy" alt="Wine glasses on the robotic bar tray against a sunset over the sea"><figcaption>Coastal venue</figcaption></figure>
-      <figure><img src="assets/img/spacelab-hedge.jpg" loading="lazy" alt="Robotic bar against a flowering hedge backdrop"><figcaption>Garden backdrop</figcaption></figure>
-      <figure class="g-tall"><img src="assets/img/pour-closeup-2.jpg" loading="lazy" alt="Robotic arm pouring champagne mid-motion"><figcaption>Mid-pour</figcaption></figure>
+      <figure class="g-tall"><img src="assets/img/arm-back-brick.jpg" loading="lazy" alt="Robotic arm seen from behind on a terrace bar"><figcaption data-i18n="gallery.g1">Terrace setup · brick backdrop</figcaption></figure>
+      <figure class="g-wide"><img src="assets/img/terrace-glasses.jpg" loading="lazy" alt="Champagne flutes lined up on the robotic bar tray"><figcaption data-i18n="gallery.g2">Flute tray · ready to pour</figcaption></figure>
+      <figure><img src="assets/img/pour-closeup-1.jpg" loading="lazy" alt="Close-up of the robotic arm gripping a champagne bottle"><figcaption data-i18n="gallery.g3">Precision grip</figcaption></figure>
+      <figure><img src="assets/img/donjulio-suite.jpg" loading="lazy" alt="Robotic bar serving in an elegant private suite"><figcaption data-i18n="gallery.g4">Indoor private suite</figcaption></figure>
+      <figure class="g-wide"><img src="assets/img/glasses-sunset.jpg" loading="lazy" alt="Wine glasses on the robotic bar tray against a sunset over the sea"><figcaption data-i18n="gallery.g5">Coastal venue</figcaption></figure>
+      <figure><img src="assets/img/spacelab-hedge.jpg" loading="lazy" alt="Robotic bar against a flowering hedge backdrop"><figcaption data-i18n="gallery.g6">Garden backdrop</figcaption></figure>
+      <figure class="g-tall"><img src="assets/img/pour-closeup-2.jpg" loading="lazy" alt="Robotic arm pouring champagne mid-motion"><figcaption data-i18n="gallery.g7">Mid-pour</figcaption></figure>
     </div>
-    <p class="gallery-note">// preview imagery — demonstration units shown with example branding panels. Final photography from your own event added on request.</p>
+    <p class="gallery-note" data-i18n="gallery.note">// preview imagery — demonstration units shown with example branding panels. Final photography from your own event added on request.</p>
   </div>
 </section>
 
@@ -676,24 +678,24 @@
 <section class="on-dark tight" id="regions">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">WHERE WE OPERATE</div>
-      <h2>Based in Spain. Touring Europe.</h2>
+      <div class="eyebrow" data-i18n="regions.eyebrow">WHERE WE OPERATE</div>
+      <h2 data-i18n="regions.h2">Based in Spain. Touring Europe.</h2>
     </div>
     <div class="regions-wrap reveal">
       <div>
         <ul class="region-list">
-          <li class="base">Spain <span>HOME BASE — SAN SEBASTIÁN · NATIONWIDE</span></li>
-          <li>France <span>ON REQUEST</span></li>
-          <li>Germany <span>ON REQUEST</span></li>
-          <li>Italy <span>ON REQUEST</span></li>
+          <li class="base"><em data-i18n="regions.spain">Spain</em> <span data-i18n="regions.spainTag">HOME BASE — SAN SEBASTIÁN · NATIONWIDE</span></li>
+          <li><em data-i18n="regions.france">France</em> <span data-i18n="regions.onRequest">ON REQUEST</span></li>
+          <li><em data-i18n="regions.germany">Germany</em> <span data-i18n="regions.onRequest2">ON REQUEST</span></li>
+          <li><em data-i18n="regions.italy">Italy</em> <span data-i18n="regions.onRequest3">ON REQUEST</span></li>
         </ul>
-        <p class="region-note">Travelling further? <b>Get in touch</b> — international bookings outside these four countries are considered case by case, depending on logistics and event date.</p>
+        <p class="region-note" data-i18n-html="regions.note">Travelling further? <b>Get in touch</b> — international bookings outside these four countries are considered case by case, depending on logistics and event date.</p>
       </div>
       <div class="specs">
-        <div class="spec"><div class="v">4</div><div class="k">drink stations / bottle mounts</div></div>
-        <div class="spec"><div class="v">~1.5m²</div><div class="k">footprint required</div></div>
-        <div class="spec"><div class="v">Indoor / Outdoor</div><div class="k">covered area for rain &amp; direct sun</div></div>
-        <div class="spec"><div class="v">Battery or 230V</div><div class="k">off-grid or standard socket</div></div>
+        <div class="spec"><div class="v">4</div><div class="k" data-i18n="regions.spec1">drink stations / bottle mounts</div></div>
+        <div class="spec"><div class="v">~1.5m²</div><div class="k" data-i18n="regions.spec2">footprint required</div></div>
+        <div class="spec"><div class="v" data-i18n="regions.spec3v">Indoor / Outdoor</div><div class="k" data-i18n="regions.spec3">covered area for rain & direct sun</div></div>
+        <div class="spec"><div class="v" data-i18n="regions.spec4v">Battery or 230V</div><div class="k" data-i18n="regions.spec4">off-grid or standard socket</div></div>
       </div>
     </div>
   </div>
@@ -703,52 +705,34 @@
 <section id="faq">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">FAQ</div>
-      <h2>Good to know before you book.</h2>
+      <div class="eyebrow" data-i18n="faq.eyebrow">FAQ</div>
+      <h2 data-i18n="faq.h2">Good to know before you book.</h2>
     </div>
     <div class="reveal" style="max-width:840px;">
       <div class="faq-item open">
-        <button class="faq-q"><span>Do you have a referral program for event agencies?</span><span class="plus"></span></button>
-        <div class="faq-a"><p>Yes — agencies can earn a 10% commission on every order from €850, or resell Robobar at their own rate and keep 100% of the markup. See the <a href="#referral" style="color:var(--turquoise-deep); text-decoration:underline;">partner section</a> or get in touch to set it up.</p></div>
+        <button class="faq-q"><span data-i18n="faq.q1">What can the robot serve?</span><span class="plus"></span></button>
+        <div class="faq-a"><p data-i18n="faq.a1">Champagne, wine, spirits, cocktails and mocktails — anything that can be poured from a bottle. Tell us your menu in advance and we'll set up the right bottle mounts and glassware for it.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span>What can the robot serve?</span><span class="plus"></span></button>
-        <div class="faq-a"><p>Champagne, wine, spirits, cocktails and mocktails — anything that can be poured from a bottle. Tell us your menu in advance and we'll set up the right bottle mounts and glassware for it.</p></div>
+        <button class="faq-q"><span data-i18n="faq.q2">Can we put our own branding on the unit?</span><span class="plus"></span></button>
+        <div class="faq-a"><p data-i18n="faq.a2">Yes. The front panel accepts a printed or vinyl wrap, and the under-lighting colour can be matched to your palette, so the unit can carry your company or event branding for the day. Ask us for the panel template when you book.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span>Can we put our own branding on the unit?</span><span class="plus"></span></button>
-        <div class="faq-a"><p>Yes. The front panel accepts a printed or vinyl wrap, and the under-lighting colour can be matched to your palette, so the unit can carry your company or event branding for the day. Ask us for the panel template when you book.</p></div>
+        <button class="faq-q"><span data-i18n="faq.q3">Does it need to be plugged in?</span><span class="plus"></span></button>
+        <div class="faq-a"><p data-i18n="faq.a3">No — Robobar can run entirely on battery, so it isn't tied to a power outlet. When a standard 230V socket is available nearby, it can run on mains instead. Either way, placement is dictated by your venue layout, not by cable routing.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span>Does it need to be plugged in?</span><span class="plus"></span></button>
-        <div class="faq-a"><p>No — Robobar can run entirely on battery, so it isn't tied to a power outlet. When a standard 230V socket is available nearby, it can run on mains instead. Either way, placement is dictated by your venue layout, not by cable routing.</p></div>
+        <button class="faq-q"><span data-i18n="faq.q4">What does the venue need to provide?</span><span class="plus"></span></button>
+        <div class="faq-a"><p data-i18n="faq.a4">A flat surface of roughly 1.5m² and cover from direct sun or rain if the event is outdoors. A standard power socket nearby is optional — the unit works on battery if there isn't one. We bring the rest, including glassware mounts and the control panel.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span>What does the venue need to provide?</span><span class="plus"></span></button>
-        <div class="faq-a"><p>A flat surface of roughly 1.5m² and cover from direct sun or rain if the event is outdoors. A standard power socket nearby is optional — the unit works on battery if there isn't one. We bring the rest, including glassware mounts and the control panel.</p></div>
+        <button class="faq-q"><span data-i18n="faq.q5">Is the robot supervised during the event?</span><span class="plus"></span></button>
+        <div class="faq-a"><p data-i18n="faq.a5">Yes, one of our engineers is always on site to install, dismantle and manage the unit throughout — the robot performs the pour, but a person is always nearby.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span>Is the robot supervised during the event?</span><span class="plus"></span></button>
-        <div class="faq-a"><p>Yes, one of our engineers is always on site to install, dismantle, and manage the unit throughout — the robot performs the pour, but a person is always nearby.</p></div>
+        <button class="faq-q"><span data-i18n="faq.q6">How far in advance should we book?</span><span class="plus"></span></button>
+        <div class="faq-a"><p data-i18n="faq.a6">We recommend 4–6 weeks for weddings and private events, and earlier for peak season (May–September) or for international dates outside Spain. Send us your date as soon as you have it and we'll confirm availability.</p></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q"><span>How far in advance should we book?</span><span class="plus"></span></button>
-        <div class="faq-a"><p>We recommend 4–6 weeks for weddings and private events, and earlier for peak season (May–September) or for international dates outside Spain. Send us your date as soon as you have it and we'll confirm availability.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= REFERRAL ================= -->
-<section class="tight" id="referral">
-  <div class="wrap">
-    <div class="referral-banner reveal">
-      <div>
-        <div class="eyebrow" style="margin-bottom:10px;">FOR EVENT AGENCIES</div>
-        <h3>Refer us, or resell us — your call.</h3>
-        <p>Earn a 10% commission on every order from €850, or mark up the price yourself and keep 100% of the margin as a reseller. Either way, your client gets the showpiece and you get paid.</p>
-      </div>
-      <a href="#contact" class="btn btn-primary">Become a partner →</a>
     </div>
   </div>
 </section>
@@ -758,9 +742,9 @@
   <div class="wrap">
     <div class="contact-wrap">
       <div class="contact-info reveal">
-        <div class="eyebrow">REQUEST A QUOTE</div>
-        <h2 style="margin-top:18px;">Tell us about your event.</h2>
-        <p>Send over the basics and we'll come back to you within 48 hours with availability and a quote. No commitment, no obligation.</p>
+        <div class="eyebrow" data-i18n="contact.eyebrow">REQUEST A QUOTE</div>
+        <h2 style="margin-top:18px;" data-i18n="contact.h2">Tell us about your event.</h2>
+        <p data-i18n="contact.p">Send over the basics and we'll come back to you within 48 hours with availability and a quote. No commitment, no obligation.</p>
         <div class="contact-detail">
           <a href="mailto:hello@roboticsbartender.com">hello@roboticsbartender.com</a>
           <a href="tel:+34722166551">+34 722 166 551</a>
@@ -770,12 +754,12 @@
       <form class="reveal" id="quoteForm" action="https://formspree.io/f/xdarebzr" method="POST">
         <input type="hidden" name="_subject" value="New quote request — Robotics Bartender">
         <div class="form-row">
-          <div><label for="fname">Full name</label><input id="fname" name="name" type="text" placeholder="Jane Doe" required></div>
-          <div><label for="femail">Email</label><input id="femail" name="email" type="email" placeholder="jane@email.com" required></div>
+          <div><label for="fname" data-i18n="form.name">Full name</label><input id="fname" name="name" type="text" data-i18n-ph="form.namePh" placeholder="Jane Doe" required></div>
+          <div><label for="femail" data-i18n="form.email">Email</label><input id="femail" name="email" type="email" placeholder="jane@email.com" required></div>
         </div>
         <div class="form-row">
           <div>
-            <label>Phone</label>
+            <label data-i18n="form.phone">Phone</label>
             <div class="phone-wrap">
               <div class="cc-select" id="ccSelect">
                 <button type="button" class="cc-trigger" id="ccTrigger" aria-haspopup="listbox" aria-expanded="false">
@@ -784,16 +768,16 @@
                   <svg class="cc-arrow" viewBox="0 0 10 6" width="10" height="6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
                 <div class="cc-dropdown" id="ccDropdown" role="listbox">
-                  <input class="cc-search" id="ccSearch" type="text" placeholder="Search country…" autocomplete="off">
+                  <input class="cc-search" id="ccSearch" type="text" data-i18n-ph="form.ccSearch" placeholder="Search country…" autocomplete="off">
                   <ul class="cc-list" id="ccList"></ul>
                 </div>
                 <input type="hidden" name="phone_code" id="ccValue" value="+34">
               </div>
-              <input id="fphone" name="phone_number" type="tel" placeholder="000000000" required pattern="[0-9\s]{6,}" title="Enter at least 6 digits">
+              <input id="fphone" name="phone_number" type="tel" placeholder="000000000" required pattern="[0-9\s]{6,}" data-i18n-title="form.phoneTitle" title="Enter at least 6 digits">
             </div>
           </div>
           <div>
-            <label>Event date</label>
+            <label data-i18n="form.date">Event date</label>
             <div class="date-wrap">
               <input class="d-day" id="fday" name="date_dd" type="text" inputmode="numeric" maxlength="2" placeholder="DD" autocomplete="off">
               <span class="date-sep">/</span>
@@ -805,23 +789,27 @@
         </div>
         <div class="form-row">
           <div>
-            <label for="ftype">Event type</label>
+            <label for="ftype" data-i18n="form.type">Event type</label>
             <select id="ftype" name="type" required>
-              <option value="" disabled selected>Select event type…</option>
-              <option>Wedding / private event</option>
-              <option>Corporate event / IT gala</option>
-              <option>Brand activation / trade show</option>
-              <option>Festival / entertainment night</option>
-              <option>Other</option>
+              <option value="" disabled selected data-i18n="form.typePh">Select event type…</option>
+              <option data-i18n="form.type1">Wedding / private event</option>
+              <option data-i18n="form.type2">Corporate event / IT gala</option>
+              <option data-i18n="form.type3">Brand activation / trade show</option>
+              <option data-i18n="form.type4">Festival / entertainment night</option>
+              <option data-i18n="form.type5">Other</option>
             </select>
           </div>
-          <div><label for="floc">Event location</label><input id="floc" name="location" type="text" placeholder="City, country"></div>
+          <div><label for="floc" data-i18n="form.location">Event location</label><input id="floc" name="location" type="text" data-i18n-ph="form.locationPh" placeholder="City, country"></div>
         </div>
         <div>
-          <label for="fmsg">Tell us more</label>
-          <textarea id="fmsg" name="message" placeholder="Guest count, drinks you'd like served, indoor/outdoor, anything else useful..."></textarea>
+          <label for="fmsg" data-i18n="form.message">Tell us more</label>
+          <textarea id="fmsg" name="message" data-i18n-ph="form.messagePh" placeholder="Guest count, drinks you'd like served, indoor/outdoor, anything else useful..."></textarea>
         </div>
-        <button type="submit" class="btn btn-primary form-submit" id="submitBtn">Send request →</button>
+        <label class="form-consent">
+          <input type="checkbox" id="fconsent" name="consent" required>
+          <span data-i18n-html="form.consent">I have read and accept the <a href="privacy.html" target="_blank">Privacy Policy</a> and consent to my data being used to respond to this enquiry.</span>
+        </label>
+        <button type="submit" class="btn btn-primary form-submit" id="submitBtn" data-i18n="form.submit">Send request →</button>
         <p class="form-foot" id="formStatus"></p>
       </form>
     </div>
@@ -837,52 +825,184 @@
       </a>
       <div class="footer-cols">
         <div class="footer-col" style="max-width:220px;">
-          <p style="font-family:'Space Grotesk',sans-serif; font-style:italic; color:var(--text-light-dim); font-size:14px; margin:0;">Beyond Ordinary.</p>
+          <p style="font-family:'Space Grotesk',sans-serif; font-style:italic; color:var(--text-light-dim); font-size:14px; margin:0;" data-i18n="footer.tagline">Beyond Ordinary.</p>
         </div>
         <div class="footer-col">
-          <h5>Site</h5>
-          <a href="#concept">Concept</a>
-          <a href="#how">How it works</a>
-          <a href="#cases">Use cases</a>
-          <a href="#gallery">Gallery</a>
+          <h5 data-i18n="footer.site">Site</h5>
+          <a href="#concept" data-i18n="nav.concept">Concept</a>
+          <a href="#cases" data-i18n="nav.cases">Use cases</a>
+          <a href="#experience" data-i18n="nav.experience">The experience</a>
+          <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
         </div>
         <div class="footer-col">
-          <h5>Info</h5>
-          <a href="#regions">Where we go</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact">Request a quote</a>
+          <h5 data-i18n="footer.legal">Legal</h5>
+          <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="cookies.html" data-i18n="footer.cookies">Cookie Policy</a>
+          <a href="terms.html" data-i18n="footer.terms">Terms of Service</a>
         </div>
         <div class="footer-col">
-          <h5>Contact</h5>
+          <h5 data-i18n="footer.contact">Contact</h5>
           <a href="mailto:hello@roboticsbartender.com">hello@roboticsbartender.com</a>
           <a href="tel:+34722166551">+34 722 166 551</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="year"></span> Robotics Bartender. Robotic bar service — drinks supplied by client/venue.</span>
-      <span>Operated as an autónomo, Spain.</span>
+      <span data-i18n-html="footer.bottom1">© <span id="year"></span> Robotics Bartender · Vladislavo Lysenko (autónomo), San Sebastián, Spain.</span>
+      <span data-i18n="footer.bottom2">Robotic bar service — drinks supplied by client/venue.</span>
     </div>
   </div>
 </footer>
 
+<!-- ================= COOKIE BANNER ================= -->
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <p data-i18n-html="cookie.text">We use only essential cookies to make this site work, plus optional ones to understand traffic. You can accept or reject the optional ones. See our <a href="cookies.html">Cookie Policy</a>.</p>
+  <div class="cookie-actions">
+    <button class="btn btn-ghost" id="cookieReject" data-i18n="cookie.reject">Reject optional</button>
+    <button class="btn btn-primary" id="cookieAccept" data-i18n="cookie.accept">Accept all</button>
+  </div>
+</div>
+
 <script>
   document.documentElement.classList.add('js');
-  document.getElementById('year').textContent = new Date().getFullYear();
 
-  // header scroll state
-  const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 30);
+  /* ============ I18N DICTIONARY ============ */
+  const I18N = {
+    en: {
+      'brand.tag':'ROBOTIC BAR SERVICE',
+      'nav.concept':'Concept','nav.cases':'Use cases','nav.experience':'The experience','nav.process':'Process','nav.gallery':'Gallery','nav.regions':'Where we go','nav.faq':'FAQ','nav.cta':'Request a quote',
+      'hero.eyebrow':'ROBOTIC BAR · WEDDINGS · BRAND ACTIVATIONS · LUXURY EVENTS',
+      'hero.title':'Your event,<br>the moment<br><em>everyone films.</em>',
+      'hero.sub':"A robotic arm takes the floor — pouring with cinematic precision as your guests gather, film and share. It isn't a bar. It's the centerpiece they'll be talking about long after the last glass.",
+      'hero.cta1':'Request a quote →','hero.cta2':'See it in action',
+      'hero.r1':'<b>Based in San Sebastián</b> · available nationwide','hero.r2':'Touring <b>France · Germany · Italy</b>','hero.r3':'Further afield <b>on request</b>',
+      'concept.eyebrow':'THE CONCEPT',
+      'concept.h2':'A robotic arm that serves — you supply the drinks, we supply the spectacle.',
+      'concept.lead':'We call the system <b>Robobar</b> — a precision robotic arm built to be the centerpiece of the room, not just the bar.',
+      'concept.p1h':'Champagne, wine, spirits or mocktails','concept.p1p':"The arm handles bottles, pours into flutes, glasses or shot glasses, and repeats the exact same motion every time — whatever you're serving, the pour is identical, glass after glass.",
+      'concept.p2h':'Battery or mains — goes anywhere','concept.p2p':"Robobar runs on battery for full off-grid freedom, or plugs into a standard 230V socket when one's nearby. Set it up on the lawn, the rooftop or the show floor — wherever the event actually is.",
+      'concept.p3h':'Built-in marketing tools','concept.p3p':"Gate each pour behind a QR code, a short survey or a follow on your event's social account — guests get a drink, you get a lead or a new follower.",
+      'cases.eyebrow':'USE CASES','cases.h2':'Built for the moments that need a wow factor.','cases.p':"The same arm, restyled and rebriefed for the room it's working in — from a wedding welcome table to a trade-show booth.",
+      'cases.c1tag':'CEREMONY & RECEPTION','cases.c1h':'Weddings & private events','cases.c2tag':'FINTECH · TELECOM · IT GALAS','cases.c2h':'Corporate events','cases.c3tag':'LAUNCHES & TRADE SHOWS','cases.c3h':'Brand activations','cases.c4tag':'CELEBRATIONS','cases.c4h':'Private parties',
+      'exp.eyebrow':'THE EXPERIENCE','exp.h2':'More than a drink. A moment worth sharing.','exp.p':'Robobar turns serving into a show — and a show into content, conversation and a brand people remember.',
+      'exp.v1h':'A magnet for the room','exp.v1p':'The arm draws a crowd the second it moves. Guests gather, phones come out, and your event has its signature moment — the one people remember and retell.',
+      'exp.v2h':'Content that travels','exp.v2p':'Every pour is a clip worth posting. Your event — and your brand — keeps spreading across stories and feeds long after the night ends.',
+      'exp.v3h':'Flawless, all night long','exp.v3p':'The same cinematic, repeatable motion for the first guest and the five-hundredth. No queues at a tired bar, no off pours, no spills — just consistency that looks effortless.',
+      'exp.v4h':'Yours for the night','exp.v4p':'Wrap it in your colours, map the menu to your drinks, theme the lighting to your brand. For one night, the showpiece of the room is entirely yours.',
+      'process.eyebrow':'HOW WE WORK TOGETHER','process.h2':'Three stages, start to finish.','process.p':"From first call to last call, here's exactly what happens between booking Robobar and seeing it pour at your event.",
+      'process.s1h':'Concept alignment','process.s1p':'We build a custom drink menu, design the bar setup, and map out a lead-generation workflow tailored to your brand.',
+      'process.s2h':'Programming & preparation','process.s2p':'Full robot programming, system configuration and complete testing at our facilities — before anything reaches your venue.',
+      'process.s3h':'Installation & launch','process.s3p':'We deliver, set up on site, and our engineer provides full technical support throughout the entire event.',
+      'gallery.eyebrow':'PREVIEW GALLERY','gallery.h2':'The arm, in the field.','gallery.p':'A look at the robot and its control panel across different settings and brand finishes — a preview of the experience your guests will get.',
+      'gallery.g1':'Terrace setup · brick backdrop','gallery.g2':'Flute tray · ready to pour','gallery.g3':'Precision grip','gallery.g4':'Indoor private suite','gallery.g5':'Coastal venue','gallery.g6':'Garden backdrop','gallery.g7':'Mid-pour',
+      'gallery.note':'// preview imagery — demonstration units shown with example branding panels. Final photography from your own event added on request.',
+      'regions.eyebrow':'WHERE WE OPERATE','regions.h2':'Based in Spain. Touring Europe.',
+      'regions.spain':'Spain','regions.spainTag':'HOME BASE — SAN SEBASTIÁN · NATIONWIDE','regions.france':'France','regions.germany':'Germany','regions.italy':'Italy','regions.onRequest':'ON REQUEST','regions.onRequest2':'ON REQUEST','regions.onRequest3':'ON REQUEST',
+      'regions.note':'Travelling further? <b>Get in touch</b> — international bookings outside these four countries are considered case by case, depending on logistics and event date.',
+      'regions.spec1':'drink stations / bottle mounts','regions.spec2':'footprint required','regions.spec3v':'Indoor / Outdoor','regions.spec3':'covered area for rain & direct sun','regions.spec4v':'Battery or 230V','regions.spec4':'off-grid or standard socket',
+      'faq.eyebrow':'FAQ','faq.h2':'Good to know before you book.',
+      'faq.q1':'What can the robot serve?','faq.a1':"Champagne, wine, spirits, cocktails and mocktails — anything that can be poured from a bottle. Tell us your menu in advance and we'll set up the right bottle mounts and glassware for it.",
+      'faq.q2':'Can we put our own branding on the unit?','faq.a2':'Yes. The front panel accepts a printed or vinyl wrap, and the under-lighting colour can be matched to your palette, so the unit can carry your company or event branding for the day. Ask us for the panel template when you book.',
+      'faq.q3':'Does it need to be plugged in?','faq.a3':"No — Robobar can run entirely on battery, so it isn't tied to a power outlet. When a standard 230V socket is available nearby, it can run on mains instead. Either way, placement is dictated by your venue layout, not by cable routing.",
+      'faq.q4':'What does the venue need to provide?','faq.a4':'A flat surface of roughly 1.5m² and cover from direct sun or rain if the event is outdoors. A standard power socket nearby is optional — the unit works on battery if there isn\'t one. We bring the rest, including glassware mounts and the control panel.',
+      'faq.q5':'Is the robot supervised during the event?','faq.a5':'Yes, one of our engineers is always on site to install, dismantle and manage the unit throughout — the robot performs the pour, but a person is always nearby.',
+      'faq.q6':'How far in advance should we book?','faq.a6':'We recommend 4–6 weeks for weddings and private events, and earlier for peak season (May–September) or for international dates outside Spain. Send us your date as soon as you have it and we\'ll confirm availability.',
+      'contact.eyebrow':'REQUEST A QUOTE','contact.h2':'Tell us about your event.','contact.p':"Send over the basics and we'll come back to you within 48 hours with availability and a quote. No commitment, no obligation.",
+      'form.name':'Full name','form.namePh':'Jane Doe','form.email':'Email','form.phone':'Phone','form.ccSearch':'Search country…','form.phoneTitle':'Enter at least 6 digits','form.date':'Event date','form.type':'Event type','form.typePh':'Select event type…','form.type1':'Wedding / private event','form.type2':'Corporate event / IT gala','form.type3':'Brand activation / trade show','form.type4':'Festival / entertainment night','form.type5':'Other','form.location':'Event location','form.locationPh':'City, country','form.message':'Tell us more','form.messagePh':"Guest count, drinks you'd like served, indoor/outdoor, anything else useful...",
+      'form.consent':'I have read and accept the <a href="privacy.html" target="_blank">Privacy Policy</a> and consent to my data being used to respond to this enquiry.',
+      'form.submit':'Send request →','form.sending':'Sending…','form.sent':'Sent ✓','form.success':"We've received your request and will get back to you within 48 hours.",'form.error':'Something went wrong — please email us directly at hello@roboticsbartender.com',
+      'footer.tagline':'Beyond Ordinary.','footer.site':'Site','footer.legal':'Legal','footer.privacy':'Privacy Policy','footer.cookies':'Cookie Policy','footer.terms':'Terms of Service','footer.contact':'Contact',
+      'footer.bottom1':'© <span id="year"></span> Robotics Bartender · Vladislavo Lysenko (autónomo), San Sebastián, Spain.','footer.bottom2':'Robotic bar service — drinks supplied by client/venue.',
+      'cookie.text':'We use only essential cookies to make this site work, plus optional ones to understand traffic. You can accept or reject the optional ones. See our <a href="cookies.html">Cookie Policy</a>.','cookie.accept':'Accept all','cookie.reject':'Reject optional'
+    },
+    es: {
+      'brand.tag':'SERVICIO DE BAR ROBÓTICO',
+      'nav.concept':'Concepto','nav.cases':'Casos de uso','nav.experience':'La experiencia','nav.process':'Proceso','nav.gallery':'Galería','nav.regions':'Dónde vamos','nav.faq':'FAQ','nav.cta':'Solicitar presupuesto',
+      'hero.eyebrow':'BAR ROBÓTICO · BODAS · ACTIVACIONES DE MARCA · EVENTOS DE LUJO',
+      'hero.title':'Tu evento,<br>el momento<br><em>que todos graban.</em>',
+      'hero.sub':'Un brazo robótico toma el protagonismo — sirviendo con precisión cinematográfica mientras tus invitados se acercan, graban y comparten. No es una barra. Es el centro de atención del que seguirán hablando mucho después de la última copa.',
+      'hero.cta1':'Solicitar presupuesto →','hero.cta2':'Verlo en acción',
+      'hero.r1':'<b>Con base en San Sebastián</b> · disponible en toda España','hero.r2':'De gira por <b>Francia · Alemania · Italia</b>','hero.r3':'Más lejos <b>bajo petición</b>',
+      'concept.eyebrow':'EL CONCEPTO',
+      'concept.h2':'Un brazo robótico que sirve — tú pones las bebidas, nosotros ponemos el espectáculo.',
+      'concept.lead':'Llamamos al sistema <b>Robobar</b> — un brazo robótico de precisión creado para ser el centro de atención de la sala, no solo la barra.',
+      'concept.p1h':'Champán, vino, destilados o mocktails','concept.p1p':'El brazo maneja las botellas, sirve en copas de flauta, vasos o chupitos, y repite exactamente el mismo movimiento cada vez — sirvas lo que sirvas, el servicio es idéntico, copa tras copa.',
+      'concept.p2h':'Batería o red eléctrica — va a cualquier sitio','concept.p2p':'Robobar funciona con batería para total libertad sin enchufes, o se conecta a una toma estándar de 230V cuando hay una cerca. Colócalo en el césped, la azotea o la feria — donde el evento realmente esté.',
+      'concept.p3h':'Herramientas de marketing integradas','concept.p3p':'Condiciona cada servicio a un código QR, una breve encuesta o un seguimiento en la red social del evento — los invitados consiguen una copa, tú consigues un lead o un nuevo seguidor.',
+      'cases.eyebrow':'CASOS DE USO','cases.h2':'Creado para los momentos que necesitan un factor sorpresa.','cases.p':'El mismo brazo, reestilizado y readaptado para la sala en la que trabaja — desde una mesa de bienvenida de boda hasta un stand de feria.',
+      'cases.c1tag':'CEREMONIA Y BANQUETE','cases.c1h':'Bodas y eventos privados','cases.c2tag':'FINTECH · TELECO · GALAS IT','cases.c2h':'Eventos corporativos','cases.c3tag':'LANZAMIENTOS Y FERIAS','cases.c3h':'Activaciones de marca','cases.c4tag':'CELEBRACIONES','cases.c4h':'Fiestas privadas',
+      'exp.eyebrow':'LA EXPERIENCIA','exp.h2':'Más que una copa. Un momento que merece compartirse.','exp.p':'Robobar convierte el servicio en un espectáculo — y el espectáculo en contenido, conversación y una marca que la gente recuerda.',
+      'exp.v1h':'Un imán para la sala','exp.v1p':'El brazo atrae a la multitud en cuanto se mueve. Los invitados se acercan, salen los móviles, y tu evento tiene su momento estrella — el que la gente recuerda y cuenta.',
+      'exp.v2h':'Contenido que viaja','exp.v2p':'Cada servicio es un clip que merece publicarse. Tu evento — y tu marca — se siguen difundiendo por stories y feeds mucho después de que termine la noche.',
+      'exp.v3h':'Impecable, toda la noche','exp.v3p':'El mismo movimiento cinematográfico y repetible para el primer invitado y para el quinientos. Sin colas en una barra cansada, sin servicios fallidos, sin derrames — solo una consistencia que parece sin esfuerzo.',
+      'exp.v4h':'Tuyo por una noche','exp.v4p':'Envuélvelo en tus colores, adapta la carta a tus bebidas, ambienta la iluminación a tu marca. Por una noche, la pieza estrella de la sala es enteramente tuya.',
+      'process.eyebrow':'CÓMO TRABAJAMOS JUNTOS','process.h2':'Tres etapas, de principio a fin.','process.p':'De la primera llamada a la última copa, esto es exactamente lo que ocurre entre reservar Robobar y verlo servir en tu evento.',
+      'process.s1h':'Alineación del concepto','process.s1p':'Creamos una carta de bebidas a medida, diseñamos el montaje de la barra y trazamos un flujo de captación de leads adaptado a tu marca.',
+      'process.s2h':'Programación y preparación','process.s2p':'Programación completa del robot, configuración del sistema y pruebas totales en nuestras instalaciones — antes de que nada llegue a tu local.',
+      'process.s3h':'Instalación y puesta en marcha','process.s3p':'Entregamos, montamos en el sitio y nuestro ingeniero ofrece soporte técnico completo durante todo el evento.',
+      'gallery.eyebrow':'GALERÍA PREVIA','gallery.h2':'El brazo, sobre el terreno.','gallery.p':'Un vistazo al robot y su panel de control en distintos entornos y acabados de marca — un anticipo de la experiencia que vivirán tus invitados.',
+      'gallery.g1':'Montaje en terraza · fondo de ladrillo','gallery.g2':'Bandeja de copas · listo para servir','gallery.g3':'Agarre de precisión','gallery.g4':'Suite privada interior','gallery.g5':'Local costero','gallery.g6':'Fondo de jardín','gallery.g7':'En pleno servicio',
+      'gallery.note':'// imágenes de muestra — unidades de demostración con paneles de marca de ejemplo. Fotografía final de tu propio evento añadida bajo petición.',
+      'regions.eyebrow':'DÓNDE OPERAMOS','regions.h2':'Con base en España. De gira por Europa.',
+      'regions.spain':'España','regions.spainTag':'BASE — SAN SEBASTIÁN · TODA ESPAÑA','regions.france':'Francia','regions.germany':'Alemania','regions.italy':'Italia','regions.onRequest':'BAJO PETICIÓN','regions.onRequest2':'BAJO PETICIÓN','regions.onRequest3':'BAJO PETICIÓN',
+      'regions.note':'¿Viajas más lejos? <b>Escríbenos</b> — las reservas internacionales fuera de estos cuatro países se estudian caso por caso, según la logística y la fecha del evento.',
+      'regions.spec1':'estaciones de bebida / soportes de botella','regions.spec2':'espacio necesario','regions.spec3v':'Interior / Exterior','regions.spec3':'zona cubierta de lluvia y sol directo','regions.spec4v':'Batería o 230V','regions.spec4':'sin enchufe o toma estándar',
+      'faq.eyebrow':'FAQ','faq.h2':'Bueno saberlo antes de reservar.',
+      'faq.q1':'¿Qué puede servir el robot?','faq.a1':'Champán, vino, destilados, cócteles y mocktails — cualquier cosa que se pueda servir de una botella. Cuéntanos tu carta con antelación y prepararemos los soportes de botella y la cristalería adecuados.',
+      'faq.q2':'¿Podemos poner nuestra propia marca en la unidad?','faq.a2':'Sí. El panel frontal admite un vinilo o impresión, y el color de la iluminación inferior puede ajustarse a tu paleta, de modo que la unidad puede llevar la marca de tu empresa o evento durante el día. Pídenos la plantilla del panel al reservar.',
+      'faq.q3':'¿Necesita estar enchufado?','faq.a3':'No — Robobar puede funcionar enteramente con batería, así que no depende de un enchufe. Cuando hay una toma estándar de 230V cerca, puede funcionar con red eléctrica. En cualquier caso, la ubicación la decide la distribución de tu local, no el cableado.',
+      'faq.q4':'¿Qué debe proporcionar el local?','faq.a4':'Una superficie plana de aproximadamente 1,5 m² y cobertura frente al sol directo o la lluvia si el evento es al aire libre. Una toma de corriente cercana es opcional — la unidad funciona con batería si no la hay. Nosotros traemos el resto, incluidos los soportes de cristalería y el panel de control.',
+      'faq.q5':'¿Se supervisa el robot durante el evento?','faq.a5':'Sí, uno de nuestros ingenieros está siempre en el sitio para instalar, desmontar y gestionar la unidad durante todo el evento — el robot realiza el servicio, pero siempre hay una persona cerca.',
+      'faq.q6':'¿Con cuánta antelación deberíamos reservar?','faq.a6':'Recomendamos 4–6 semanas para bodas y eventos privados, y antes para temporada alta (mayo–septiembre) o para fechas internacionales fuera de España. Envíanos tu fecha en cuanto la tengas y confirmaremos disponibilidad.',
+      'contact.eyebrow':'SOLICITAR PRESUPUESTO','contact.h2':'Cuéntanos sobre tu evento.','contact.p':'Envíanos lo básico y te responderemos en un plazo de 48 horas con disponibilidad y presupuesto. Sin compromiso, sin obligación.',
+      'form.name':'Nombre completo','form.namePh':'Juana Pérez','form.email':'Correo electrónico','form.phone':'Teléfono','form.ccSearch':'Buscar país…','form.phoneTitle':'Introduce al menos 6 dígitos','form.date':'Fecha del evento','form.type':'Tipo de evento','form.typePh':'Selecciona el tipo de evento…','form.type1':'Boda / evento privado','form.type2':'Evento corporativo / gala IT','form.type3':'Activación de marca / feria','form.type4':'Festival / noche de entretenimiento','form.type5':'Otro','form.location':'Lugar del evento','form.locationPh':'Ciudad, país','form.message':'Cuéntanos más','form.messagePh':'Número de invitados, bebidas que te gustaría servir, interior/exterior, cualquier otra cosa útil...',
+      'form.consent':'He leído y acepto la <a href="privacy.html" target="_blank">Política de Privacidad</a> y consiento que mis datos se usen para responder a esta consulta.',
+      'form.submit':'Enviar solicitud →','form.sending':'Enviando…','form.sent':'Enviado ✓','form.success':'Hemos recibido tu solicitud y te responderemos en un plazo de 48 horas.','form.error':'Algo ha fallado — escríbenos directamente a hello@roboticsbartender.com',
+      'footer.tagline':'Beyond Ordinary.','footer.site':'Sitio','footer.legal':'Legal','footer.privacy':'Política de Privacidad','footer.cookies':'Política de Cookies','footer.terms':'Términos del Servicio','footer.contact':'Contacto',
+      'footer.bottom1':'© <span id="year"></span> Robotics Bartender · Vladislavo Lysenko (autónomo), San Sebastián, España.','footer.bottom2':'Servicio de bar robótico — las bebidas las aporta el cliente/local.',
+      'cookie.text':'Usamos solo cookies esenciales para que el sitio funcione, además de otras opcionales para entender el tráfico. Puedes aceptar o rechazar las opcionales. Consulta nuestra <a href="cookies.html">Política de Cookies</a>.','cookie.accept':'Aceptar todo','cookie.reject':'Rechazar opcionales'
+    }
+  };
+
+  let currentLang = localStorage.getItem('lang') || (navigator.language||'en').slice(0,2);
+  if (!I18N[currentLang]) currentLang = 'en';
+
+  function applyLang(lang){
+    const dict = I18N[lang]; if(!dict) return;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{ const v=dict[el.dataset.i18n]; if(v!=null) el.textContent=v; });
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{ const v=dict[el.dataset.i18nHtml]; if(v!=null) el.innerHTML=v; });
+    document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ const v=dict[el.dataset.i18nPh]; if(v!=null) el.placeholder=v; });
+    document.querySelectorAll('[data-i18n-title]').forEach(el=>{ const v=dict[el.dataset.i18nTitle]; if(v!=null) el.title=v; });
+    const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+    document.querySelectorAll('#langSwitch .lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+    localStorage.setItem('lang', lang);
+    currentLang = lang;
+  }
+
+  document.querySelectorAll('#langSwitch .lang-btn').forEach(b=>{
+    b.addEventListener('click', ()=>applyLang(b.dataset.lang));
   });
 
-  // mobile nav
+  /* ============ OPTIONAL CMS CONTENT OVERRIDE (Pages CMS / content/site.json) ============ */
+  fetch('content/site.json').then(r=>r.ok?r.json():null).then(d=>{
+    if(!d) return;
+    ['en','es'].forEach(l=>{ if(d[l]) Object.assign(I18N[l], d[l]); });
+    if(d.images){ Object.entries(d.images).forEach(([k,v])=>{ if(v) document.querySelectorAll('[data-img="'+k+'"]').forEach(el=>{ el.src=v; }); }); }
+    applyLang(currentLang);
+  }).catch(()=>{});
+
+  applyLang(currentLang);
+
+  /* ============ HEADER / NAV ============ */
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 30));
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-  // reveal on scroll
+  /* ============ REVEAL ON SCROLL ============ */
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -890,7 +1010,7 @@
   revealEls.forEach(el => io.observe(el));
   setTimeout(() => revealEls.forEach(el => el.classList.add('in')), 2500);
 
-  // FAQ accordion
+  /* ============ FAQ ACCORDION ============ */
   document.querySelectorAll('.faq-item').forEach(item => {
     const q = item.querySelector('.faq-q');
     const a = item.querySelector('.faq-a');
@@ -905,24 +1025,18 @@
     });
   });
 
-  // date field auto-advance
+  /* ============ DATE AUTO-ADVANCE ============ */
   function dateAutoAdvance(el, next, prev) {
     el.addEventListener('input', () => {
       el.value = el.value.replace(/\D/g, '');
       if (el.value.length === el.maxLength && next) next.focus();
     });
-    el.addEventListener('keydown', e => {
-      if (e.key === 'Backspace' && el.value === '' && prev) prev.focus();
-    });
+    el.addEventListener('keydown', e => { if (e.key === 'Backspace' && el.value === '' && prev) prev.focus(); });
   }
-  const fday = document.getElementById('fday');
-  const fmon = document.getElementById('fmon');
-  const fyr  = document.getElementById('fyr');
-  dateAutoAdvance(fday, fmon, null);
-  dateAutoAdvance(fmon, fyr,  fday);
-  dateAutoAdvance(fyr,  null, fmon);
+  const fday = document.getElementById('fday'), fmon = document.getElementById('fmon'), fyr = document.getElementById('fyr');
+  dateAutoAdvance(fday, fmon, null); dateAutoAdvance(fmon, fyr, fday); dateAutoAdvance(fyr, null, fmon);
 
-  // searchable country code selector
+  /* ============ COUNTRY CODE SELECTOR ============ */
   const COUNTRIES = [
     {i:'at',n:'Austria',c:'+43'},{i:'be',n:'Belgium',c:'+32'},{i:'bg',n:'Bulgaria',c:'+359'},
     {i:'hr',n:'Croatia',c:'+385'},{i:'cy',n:'Cyprus',c:'+357'},{i:'cz',n:'Czech Republic',c:'+420'},
@@ -944,91 +1058,51 @@
     {i:'bh',n:'Bahrain',c:'+973'},{i:'om',n:'Oman',c:'+968'},
     {i:'il',n:'Israel',c:'+972'},{i:'mx',n:'Mexico',c:'+52'},{i:'br',n:'Brazil',c:'+55'},
   ];
-  const flagURL = iso => `https://flagcdn.com/w40/${iso}.png`;
-
-  const ccSelect   = document.getElementById('ccSelect');
-  const ccTrigger  = document.getElementById('ccTrigger');
-  const ccDropdown = document.getElementById('ccDropdown');
-  const ccSearch   = document.getElementById('ccSearch');
-  const ccList     = document.getElementById('ccList');
-  const ccFlag     = document.getElementById('ccFlag');
-  const ccCode     = document.getElementById('ccCode');
-  const ccValue    = document.getElementById('ccValue');
-
-  function renderCC(q) {
-    const lq = (q||'').toLowerCase();
-    const matches = COUNTRIES.filter(c => !lq || c.n.toLowerCase().includes(lq) || c.c.includes(lq));
-    if (!matches.length) {
-      ccList.innerHTML = '<li class="cc-empty">No results</li>';
-      return;
-    }
-    ccList.innerHTML = matches.map(c =>
-      `<li class="cc-opt" data-code="${c.c}" data-iso="${c.i}">
-        <img class="cc-flag" src="${flagURL(c.i)}" alt="" width="21" height="15" loading="lazy"><span class="cn">${c.n}</span><span class="ck">${c.c}</span>
-      </li>`
-    ).join('');
-    ccList.querySelectorAll('.cc-opt').forEach(li => {
-      li.addEventListener('mousedown', e => {
-        e.preventDefault();
-        ccFlag.src = flagURL(li.dataset.iso);
-        ccCode.textContent = li.dataset.code;
-        ccValue.value = li.dataset.code;
-        closeCC();
-      });
+  const flagURL = iso => 'https://flagcdn.com/w40/'+iso+'.png';
+  const ccSelect=document.getElementById('ccSelect'), ccTrigger=document.getElementById('ccTrigger'),
+        ccSearch=document.getElementById('ccSearch'), ccList=document.getElementById('ccList'),
+        ccFlag=document.getElementById('ccFlag'), ccCode=document.getElementById('ccCode'), ccValue=document.getElementById('ccValue');
+  function renderCC(q){
+    const lq=(q||'').toLowerCase();
+    const matches=COUNTRIES.filter(c=>!lq||c.n.toLowerCase().includes(lq)||c.c.includes(lq));
+    if(!matches.length){ ccList.innerHTML='<li class="cc-empty">—</li>'; return; }
+    ccList.innerHTML=matches.map(c=>'<li class="cc-opt" data-code="'+c.c+'" data-iso="'+c.i+'"><img class="cc-flag" src="'+flagURL(c.i)+'" alt="" width="21" height="15" loading="lazy"><span class="cn">'+c.n+'</span><span class="ck">'+c.c+'</span></li>').join('');
+    ccList.querySelectorAll('.cc-opt').forEach(li=>{
+      li.addEventListener('mousedown', e=>{ e.preventDefault(); ccFlag.src=flagURL(li.dataset.iso); ccCode.textContent=li.dataset.code; ccValue.value=li.dataset.code; closeCC(); });
     });
   }
+  function openCC(){ ccSelect.classList.add('open'); ccTrigger.setAttribute('aria-expanded','true'); ccSearch.value=''; renderCC(''); ccSearch.focus(); }
+  function closeCC(){ ccSelect.classList.remove('open'); ccTrigger.setAttribute('aria-expanded','false'); }
+  ccTrigger.addEventListener('click', e=>{ e.stopPropagation(); ccSelect.classList.contains('open')?closeCC():openCC(); });
+  ccSearch.addEventListener('input', ()=>renderCC(ccSearch.value));
+  document.addEventListener('click', e=>{ if(!ccSelect.contains(e.target)) closeCC(); });
 
-  function openCC() {
-    ccSelect.classList.add('open');
-    ccTrigger.setAttribute('aria-expanded','true');
-    ccSearch.value = '';
-    renderCC('');
-    ccSearch.focus();
-  }
-  function closeCC() {
-    ccSelect.classList.remove('open');
-    ccTrigger.setAttribute('aria-expanded','false');
-  }
-
-  ccTrigger.addEventListener('click', e => { e.stopPropagation(); ccSelect.classList.contains('open') ? closeCC() : openCC(); });
-  ccSearch.addEventListener('input', () => renderCC(ccSearch.value));
-  document.addEventListener('click', e => { if (!ccSelect.contains(e.target)) closeCC(); });
-
-  // form submission via Formspree
-  const form = document.getElementById('quoteForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const formStatus = document.getElementById('formStatus');
-  form.addEventListener('submit', async function(e) {
+  /* ============ FORM SUBMIT (Formspree) ============ */
+  const form=document.getElementById('quoteForm'), submitBtn=document.getElementById('submitBtn'), formStatus=document.getElementById('formStatus');
+  form.addEventListener('submit', async function(e){
     e.preventDefault();
-    // strict required validation: Name, Phone, Email, Event type
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
-    formStatus.textContent = '';
-    const data = new FormData(form);
-    try {
-      const res = await fetch('https://formspree.io/f/xdarebzr', {
-        method: 'POST', body: data, headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        submitBtn.textContent = 'Sent ✓';
-        formStatus.textContent = "We've received your request and will get back to you within 48 hours.";
-        formStatus.style.color = 'var(--turquoise-glow)';
-        form.reset();
-        ccFlag.src = flagURL('es'); ccCode.textContent = '+34'; ccValue.value = '+34';
-      } else {
-        throw new Error();
-      }
-    } catch {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send request →';
-      formStatus.textContent = 'Something went wrong — please email us directly at hello@roboticsbartender.com';
-      formStatus.style.color = '#f87171';
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    const t=I18N[currentLang];
+    submitBtn.disabled=true; submitBtn.textContent=t['form.sending']; formStatus.textContent='';
+    try{
+      const res=await fetch('https://formspree.io/f/xdarebzr', { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
+      if(res.ok){
+        submitBtn.textContent=t['form.sent'];
+        formStatus.textContent=t['form.success']; formStatus.style.color='var(--turquoise-glow)';
+        form.reset(); ccFlag.src=flagURL('es'); ccCode.textContent='+34'; ccValue.value='+34';
+      } else throw new Error();
+    }catch{
+      submitBtn.disabled=false; submitBtn.textContent=t['form.submit'];
+      formStatus.textContent=t['form.error']; formStatus.style.color='#f87171';
     }
   });
+
+  /* ============ COOKIE CONSENT ============ */
+  const cookieBanner=document.getElementById('cookieBanner');
+  function setConsent(v){ try{ localStorage.setItem('cookieConsent', v); }catch(e){} cookieBanner.hidden=true; }
+  if(!localStorage.getItem('cookieConsent')){ cookieBanner.hidden=false; }
+  document.getElementById('cookieAccept').addEventListener('click', ()=>setConsent('all'));
+  document.getElementById('cookieReject').addEventListener('click', ()=>setConsent('essential'));
 </script>
 
 </body>
