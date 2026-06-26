@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin · Robotics Bartender</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+  :root{--ink:#0B1417;--ink-soft:#101C20;--ink-edge:#1B2B30;--turquoise:#00C2B3;--turquoise-glow:#6FF0E2;--text-light:#EAF6F4;--text-dim:#A9C4C0;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;font-family:'Inter',system-ui,sans-serif;background:#0B1417;color:var(--text-light);}
+  .bar{
+    position:fixed;top:0;left:0;right:0;height:60px;z-index:10;
+    background:var(--ink-soft);border-bottom:1px solid var(--ink-edge);
+    display:flex;align-items:center;gap:16px;padding:0 18px;
+  }
+  .bar h1{font-size:15px;margin:0;font-weight:700;letter-spacing:-.01em;}
+  .bar h1 small{display:block;font-size:10.5px;color:var(--text-dim);font-weight:400;letter-spacing:.06em;text-transform:uppercase;}
+  .spacer{flex:1;}
+  .seg{display:flex;background:rgba(255,255,255,0.06);border:1px solid var(--ink-edge);border-radius:999px;padding:3px;}
+  .seg button{background:transparent;border:none;color:var(--text-dim);font:inherit;font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;cursor:pointer;}
+  .seg button.active{background:var(--turquoise);color:#062523;}
+  .btn{border:none;border-radius:999px;padding:10px 20px;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;}
+  .btn-save{background:var(--turquoise);color:#062523;}
+  .btn-save:disabled{opacity:.5;cursor:default;}
+  .btn-ghost{background:transparent;border:1px solid var(--ink-edge);color:var(--text-light);}
+  .status{font-size:12.5px;color:var(--text-dim);min-width:140px;}
+  .status.ok{color:var(--turquoise-glow);}
+  .status.err{color:#f87171;}
+  .hint{position:fixed;top:60px;left:0;right:0;z-index:9;background:rgba(0,194,179,0.08);border-bottom:1px solid var(--ink-edge);
+    font-size:12.5px;color:var(--text-dim);padding:8px 18px;}
+  .hint b{color:var(--turquoise-glow);}
+  .frame-wrap{position:fixed;top:97px;left:0;right:0;bottom:0;}
+  iframe{width:100%;height:100%;border:none;background:#0B1417;}
+  .warn{position:fixed;inset:97px 0 0 0;display:none;align-items:center;justify-content:center;padding:40px;text-align:center;}
+  .warn.show{display:flex;}
+  .warn div{max-width:560px;}
+  .warn h2{color:var(--turquoise-glow);font-size:20px;}
+  .warn code{background:rgba(255,255,255,0.08);padding:2px 7px;border-radius:5px;font-size:13px;}
+  .warn p{color:var(--text-dim);line-height:1.6;font-size:14px;}
+</style>
+</head>
+<body>
+  <div class="bar">
+    <h1>Robotics Bartender<small>Content editor</small></h1>
+    <div class="seg" id="langSeg">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="es">ES</button>
+    </div>
+    <div class="spacer"></div>
+    <span class="status" id="status">Loading…</span>
+    <button class="btn btn-ghost" id="discardBtn" title="Reload and drop unsaved edits">Discard</button>
+    <button class="btn btn-save" id="saveBtn" disabled>Save changes</button>
+  </div>
+  <div class="hint">
+    <b>Double-click</b> any text on the page to edit it. <b>Click an image</b> to change its file. Switch <b>EN/ES</b> to edit each language. Then press <b>Save changes</b>.
+  </div>
+  <div class="frame-wrap">
+    <iframe id="frame" src="index.html"></iframe>
+  </div>
+  <div class="warn" id="warn"><div>
+    <h2>Run this through a local server</h2>
+    <p>The editor needs the site to be served over <code>http://</code> (not opened directly from disk) so it can read the page and your content file.</p>
+    <p>From this folder run, for example:<br><code>python -m http.server</code><br>then open <code>http://localhost:8000/admin.html</code>.</p>
+    <p>Or just edit content in <b>Pages CMS</b> after pushing to GitHub. See the README.</p>
+  </div></div>
+
+<script>
+  const frame = document.getElementById('frame');
+  const statusEl = document.getElementById('status');
+  const saveBtn = document.getElementById('saveBtn');
+  const discardBtn = document.getElementById('discardBtn');
+  const warn = document.getElementById('warn');
+  let lang = 'en';
+  let dirty = false;
+  let fileHandle = null;
+  // overrides accumulates edits: { en:{}, es:{}, images:{} }
+  let overrides = { en:{}, es:{}, images:{} };
+
+  function setStatus(msg, cls){ statusEl.textContent = msg; statusEl.className = 'status' + (cls?(' '+cls):''); }
+  function setDirty(v){ dirty = v; saveBtn.disabled = !v; if(v) setStatus('Unsaved changes'); }
+
+  // seed overrides from existing content/site.json
+  fetch('content/site.json').then(r=>r.ok?r.json():null).then(d=>{
+    if(d){ overrides = { en:d.en||{}, es:d.es||{}, images:d.images||{} }; }
+  }).catch(()=>{});
+
+  function doc(){ return frame.contentDocument; }
+  function win(){ return frame.contentWindow; }
+
+  frame.addEventListener('load', () => {
+    let d;
+    try { d = doc(); if(!d || !d.body) throw new Error('no doc'); }
+    catch(e){ warn.classList.add('show'); setStatus('Cannot access page', 'err'); return; }
+    warn.classList.remove('show');
+    setStatus('Ready. Double-click text to edit.');
+    injectEditorStyles(d);
+    setLang(lang, true);
+  });
+
+  function injectEditorStyles(d){
+    const s = d.createElement('style');
+    s.textContent = `
+      [data-i18n]:not(option):hover, [data-i18n-html]:hover { outline:2px dashed rgba(0,194,179,.7); outline-offset:2px; cursor:text; }
+      [data-img]:hover { outline:3px solid rgba(0,194,179,.8); outline-offset:-3px; cursor:pointer; }
+      .__editing { outline:2px solid #00C2B3 !important; background:rgba(0,194,179,.12); }
+    `;
+    d.head.appendChild(s);
+  }
+
+  function editableEls(d){
+    return Array.from(d.querySelectorAll('[data-i18n]:not(option), [data-i18n-html]'));
+  }
+
+  function bindEditing(){
+    const d = doc();
+    editableEls(d).forEach(el => {
+      if(el.__bound) return; el.__bound = true;
+      const isHtml = el.hasAttribute('data-i18n-html');
+      const key = isHtml ? el.dataset.i18nHtml : el.dataset.i18n;
+      // stop links navigating on single click while editing
+      el.addEventListener('click', e => { if(el.isContentEditable) e.preventDefault(); });
+      el.addEventListener('dblclick', e => {
+        e.preventDefault();
+        el.contentEditable = 'true';
+        el.classList.add('__editing');
+        el.focus();
+      });
+      el.addEventListener('blur', () => {
+        if(!el.isContentEditable) return;
+        el.contentEditable = 'false';
+        el.classList.remove('__editing');
+        const val = isHtml ? el.innerHTML.trim() : el.textContent.trim();
+        overrides[lang][key] = val;
+        setDirty(true);
+      });
+      el.addEventListener('keydown', e => {
+        if(e.key==='Enter' && !isHtml){ e.preventDefault(); el.blur(); }
+        if(e.key==='Escape'){ el.blur(); }
+      });
+    });
+    // images
+    Array.from(d.querySelectorAll('[data-img]')).forEach(el => {
+      if(el.__bound) return; el.__bound = true;
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        const key = el.dataset.img;
+        const cur = overrides.images[key] || el.getAttribute('src');
+        const next = prompt('Image path or URL for "'+key+'":\n(e.g. assets/img/your-photo.jpg)', cur);
+        if(next && next.trim()){
+          el.src = next.trim();
+          overrides.images[key] = next.trim();
+          setDirty(true);
+        }
+      });
+    });
+  }
+
+  // paint current overrides into the iframe after a language switch
+  function paintOverrides(){
+    const d = doc();
+    const dict = overrides[lang] || {};
+    editableEls(d).forEach(el => {
+      const isHtml = el.hasAttribute('data-i18n-html');
+      const key = isHtml ? el.dataset.i18nHtml : el.dataset.i18n;
+      if(dict[key] != null){ if(isHtml) el.innerHTML = dict[key]; else el.textContent = dict[key]; }
+    });
+    Object.entries(overrides.images||{}).forEach(([k,v])=>{ if(v) d.querySelectorAll('[data-img="'+k+'"]').forEach(el=>el.src=v); });
+  }
+
+  function setLang(l, initial){
+    lang = l;
+    document.querySelectorAll('#langSeg button').forEach(b=>b.classList.toggle('active', b.dataset.lang===l));
+    try { win().applyLang(l); } catch(e){}
+    bindEditing();
+    paintOverrides();
+    if(!initial) setStatus('Editing '+l.toUpperCase());
+  }
+
+  document.querySelectorAll('#langSeg button').forEach(b=>{
+    b.addEventListener('click', ()=>setLang(b.dataset.lang));
+  });
+
+  discardBtn.addEventListener('click', ()=>{
+    if(dirty && !confirm('Discard unsaved edits and reload?')) return;
+    fetch('content/site.json').then(r=>r.ok?r.json():null).then(d=>{
+      overrides = d ? { en:d.en||{}, es:d.es||{}, images:d.images||{} } : { en:{}, es:{}, images:{} };
+      setDirty(false); frame.contentWindow.location.reload();
+    });
+  });
+
+  function buildJSON(){
+    // prune empty strings so we never blank out a field
+    const clean = o => { const r={}; Object.entries(o).forEach(([k,v])=>{ if(v!=null && v!=='') r[k]=v; }); return r; };
+    return JSON.stringify({ en:clean(overrides.en), es:clean(overrides.es), images:clean(overrides.images) }, null, 2) + '\n';
+  }
+
+  async function save(){
+    const json = buildJSON();
+    // Preferred: write straight to content/site.json via File System Access API
+    if(window.showSaveFilePicker){
+      try{
+        if(!fileHandle){
+          fileHandle = await window.showSaveFilePicker({
+            suggestedName: 'site.json',
+            types: [{ description:'JSON', accept:{ 'application/json':['.json'] } }]
+          });
+        }
+        const w = await fileHandle.createWritable();
+        await w.write(json); await w.close();
+        setStatus('Saved ✓  (reload site to see it)', 'ok'); setDirty(false);
+        return;
+      }catch(e){ if(e && e.name==='AbortError'){ setStatus('Save cancelled'); return; } /* fall through to download */ }
+    }
+    // Fallback: download site.json to drop into the content/ folder
+    const blob = new Blob([json], {type:'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'site.json'; a.click();
+    URL.revokeObjectURL(a.href);
+    setStatus('Downloaded site.json → put it in content/', 'ok'); setDirty(false);
+  }
+  saveBtn.addEventListener('click', save);
+
+  window.addEventListener('beforeunload', e => { if(dirty){ e.preventDefault(); e.returnValue=''; } });
+</script>
+</body>
+</html>

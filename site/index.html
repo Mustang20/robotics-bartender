@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Robotics Bartender — A Robotic Bar That Becomes the Moment of Your Event</title>
+<title>Robotics Bartender · A Robotic Bar That Becomes the Moment of Your Event</title>
 <meta name="description" content="A robotic arm that takes center stage at weddings, brand activations and luxury events across Spain and Europe. Cinematic precision, shareable spectacle, your brand for the night.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -108,7 +108,6 @@
     color:var(--text-light); letter-spacing:-0.01em;
   }
   .brand small{display:block; font-family:'IBM Plex Mono',monospace; font-size:9.5px; color:var(--text-light-dim); letter-spacing:.1em; font-weight:400;}
-  .nav-right{display:flex; align-items:center; gap:24px;}
   .navlinks{display:flex; align-items:center; gap:26px;}
   .navlinks a{
     font-size:14px; color:#fff; font-weight:500;
@@ -121,16 +120,6 @@
   }
   .nav-toggle{display:none; background:none; border:none; color:var(--text-light); font-size:26px;}
 
-  /* language switch */
-  .lang-switch{display:flex; align-items:center; gap:4px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); border-radius:999px; padding:3px;}
-  .lang-btn{
-    display:flex; align-items:center; gap:6px; background:transparent; border:none; border-radius:999px;
-    padding:5px 9px; font-size:12.5px; font-weight:600; color:var(--text-light-dim); font-family:'Inter',sans-serif;
-    transition:background .15s ease, color .15s ease;
-  }
-  .lang-btn img{width:18px; height:13px; object-fit:cover; border-radius:2px; display:block;}
-  .lang-btn.active{background:var(--turquoise); color:#062523;}
-
   @media (max-width:980px){
     .navlinks{
       position:fixed; inset:64px 0 0 0; background:var(--ink); flex-direction:column;
@@ -140,6 +129,24 @@
     .navlinks.open{transform:translateX(0);}
     .navlinks a{font-size:20px;}
     .nav-toggle{display:block;}
+  }
+
+  /* ---------- LANGUAGE SWITCH (fixed, side) ---------- */
+  .lang-fixed{
+    position:fixed; right:12px; top:50%; transform:translateY(-50%); z-index:95;
+    display:flex; flex-direction:column; gap:4px;
+    background:rgba(11,20,23,0.55); backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.16); border-radius:999px; padding:4px;
+  }
+  .lang-btn{
+    display:flex; align-items:center; gap:6px; background:transparent; border:none; border-radius:999px;
+    padding:6px 8px; font-size:11.5px; font-weight:700; color:var(--text-light-dim); font-family:'Inter',sans-serif;
+    transition:background .15s ease, color .15s ease;
+  }
+  .lang-btn img{width:17px; height:12px; object-fit:cover; border-radius:2px; display:block;}
+  .lang-btn.active{background:var(--turquoise); color:#062523;}
+  @media (max-width:560px){
+    .lang-fixed{top:auto; bottom:14px; right:14px; transform:none; flex-direction:row;}
   }
 
   /* ---------- HERO ---------- */
@@ -166,9 +173,7 @@
     color:#fff; font-size:clamp(40px, 6.4vw, 80px); line-height:1.0; font-weight:700;
     max-width:880px;
   }
-  .hero h1 em{
-    font-style:normal; color:var(--turquoise-glow);
-  }
+  .hero h1 em{ font-style:normal; color:var(--turquoise-glow); }
   .hero p.sub{
     color:#cfe4e0; font-size:clamp(16px,2vw,20px); max-width:600px;
     margin:24px 0 36px; line-height:1.55;
@@ -471,15 +476,16 @@
     max-width:760px; margin:0 auto;
     background:var(--ink-soft); border:1px solid var(--ink-edge); border-radius:16px;
     padding:22px 24px; box-shadow:0 20px 50px -15px rgba(0,0,0,0.7);
-    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    display:none; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
   }
+  .cookie-banner.show{display:flex;}
   .cookie-banner p{margin:0; font-size:13.5px; color:var(--text-light-dim); line-height:1.55; flex:1; min-width:240px;}
   .cookie-banner p a{color:var(--turquoise-glow); text-decoration:underline;}
   .cookie-actions{display:flex; gap:10px; flex-wrap:wrap;}
   .cookie-actions .btn{padding:11px 20px; font-size:13.5px;}
   .cookie-actions .btn-ghost{border-color:rgba(234,246,244,0.25); color:var(--text-light);}
   .cookie-actions .btn-ghost:hover{border-color:var(--turquoise-glow); color:var(--turquoise-glow);}
-  @media (max-width:560px){ .cookie-banner{flex-direction:column; align-items:stretch;} .cookie-actions .btn{flex:1; justify-content:center;} }
+  @media (max-width:560px){ .cookie-banner{flex-direction:column; align-items:stretch; bottom:74px;} .cookie-actions .btn{flex:1; justify-content:center;} }
 </style>
 </head>
 <body>
@@ -491,24 +497,24 @@
       <span>Robotics Bartender<small data-i18n="brand.tag">ROBOTIC BAR SERVICE</small></span>
     </a>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
-    <div class="nav-right">
-      <div class="navlinks" id="navLinks">
-        <a href="#concept" data-i18n="nav.concept">Concept</a>
-        <a href="#cases" data-i18n="nav.cases">Use cases</a>
-        <a href="#experience" data-i18n="nav.experience">The experience</a>
-        <a href="#process" data-i18n="nav.process">Process</a>
-        <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
-        <a href="#regions" data-i18n="nav.regions">Where we go</a>
-        <a href="#faq" data-i18n="nav.faq">FAQ</a>
-        <a href="#contact" class="nav-cta" data-i18n="nav.cta">Request a quote</a>
-      </div>
-      <div class="lang-switch" id="langSwitch">
-        <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/w40/gb.png" alt="English">EN</button>
-        <button class="lang-btn" data-lang="es"><img src="https://flagcdn.com/w40/es.png" alt="Español">ES</button>
-      </div>
+    <div class="navlinks" id="navLinks">
+      <a href="#concept" data-i18n="nav.concept">Concept</a>
+      <a href="#cases" data-i18n="nav.cases">Use cases</a>
+      <a href="#experience" data-i18n="nav.experience">The experience</a>
+      <a href="#process" data-i18n="nav.process">Process</a>
+      <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="#regions" data-i18n="nav.regions">Where we go</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#contact" class="nav-cta" data-i18n="nav.cta">Request a quote</a>
     </div>
   </nav>
 </header>
+
+<!-- language switch, moved off the header to the side -->
+<div class="lang-fixed" id="langSwitch" aria-label="Language">
+  <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/w40/gb.png" alt="English">EN</button>
+  <button class="lang-btn" data-lang="es"><img src="https://flagcdn.com/w40/es.png" alt="Español">ES</button>
+</div>
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="home">
@@ -516,7 +522,7 @@
   <div class="hero-content">
     <div class="eyebrow" data-i18n="hero.eyebrow">ROBOTIC BAR · WEDDINGS · BRAND ACTIVATIONS · LUXURY EVENTS</div>
     <h1 data-i18n-html="hero.title">Your event,<br>the moment<br><em>everyone films.</em></h1>
-    <p class="sub" data-i18n="hero.sub">A robotic arm takes the floor — pouring with cinematic precision as your guests gather, film and share. It isn't a bar. It's the centerpiece they'll be talking about long after the last glass.</p>
+    <p class="sub" data-i18n="hero.sub">A robotic arm takes the floor, pouring with cinematic precision as your guests gather, film and share. It isn't a bar. It's the centerpiece they'll be talking about long after the last glass.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Request a quote →</a>
       <a href="#experience" class="btn btn-ghost" data-i18n="hero.cta2">See it in action</a>
@@ -537,20 +543,20 @@
       <img data-img="concept" src="assets/img/toast-guest.jpg" alt="Guest toasting with a glass poured by the robotic bartender at a terrace event" loading="lazy">
       <div>
         <div class="eyebrow" data-i18n="concept.eyebrow">THE CONCEPT</div>
-        <h2 style="margin-top:18px; font-size:clamp(28px,3.6vw,40px);" data-i18n="concept.h2">A robotic arm that serves — you supply the drinks, we supply the spectacle.</h2>
-        <p style="color:var(--steel); font-size:15.5px; margin-top:14px; line-height:1.6;" data-i18n-html="concept.lead">We call the system <b>Robobar</b> — a precision robotic arm built to be the centerpiece of the room, not just the bar.</p>
+        <h2 style="margin-top:18px; font-size:clamp(28px,3.6vw,40px);" data-i18n="concept.h2">A robotic arm that serves. You supply the drinks, we supply the spectacle.</h2>
+        <p style="color:var(--steel); font-size:15.5px; margin-top:14px; line-height:1.6;" data-i18n-html="concept.lead">We call the system <b>Robobar</b>, a precision robotic arm built to be the centerpiece of the room, not just the bar.</p>
         <div class="concept-points">
           <div class="point">
             <div class="point-mark">01</div>
-            <div><h4 data-i18n="concept.p1h">Champagne, wine, spirits or mocktails</h4><p data-i18n="concept.p1p">The arm handles bottles, pours into flutes, glasses or shot glasses, and repeats the exact same motion every time — whatever you're serving, the pour is identical, glass after glass.</p></div>
+            <div><h4 data-i18n="concept.p1h">Custom branding to match your event</h4><p data-i18n="concept.p1p">Personalise the counter to your event's style, with your logo on the front panel and the backlight colours set to match your palette.</p></div>
           </div>
           <div class="point">
             <div class="point-mark">02</div>
-            <div><h4 data-i18n="concept.p2h">Battery or mains — goes anywhere</h4><p data-i18n="concept.p2p">Robobar runs on battery for full off-grid freedom, or plugs into a standard 230V socket when one's nearby. Set it up on the lawn, the rooftop or the show floor — wherever the event actually is.</p></div>
+            <div><h4 data-i18n="concept.p2h">Battery or mains, goes anywhere</h4><p data-i18n="concept.p2p">Robobar runs on battery for full off-grid freedom, or plugs into a standard 230V socket when one's nearby. Set it up on the lawn, the rooftop or the show floor, wherever the event actually is.</p></div>
           </div>
           <div class="point">
             <div class="point-mark">03</div>
-            <div><h4 data-i18n="concept.p3h">Built-in marketing tools</h4><p data-i18n="concept.p3p">Gate each pour behind a QR code, a short survey or a follow on your event's social account — guests get a drink, you get a lead or a new follower.</p></div>
+            <div><h4 data-i18n="concept.p3h">Built-in marketing tools</h4><p data-i18n="concept.p3p">Gate each pour behind a QR code, a short survey or a follow on your event's social account. Guests get a drink, you get a lead or a new follower.</p></div>
           </div>
         </div>
       </div>
@@ -564,7 +570,7 @@
     <div class="section-head reveal">
       <div class="eyebrow" data-i18n="cases.eyebrow">USE CASES</div>
       <h2 data-i18n="cases.h2">Built for the moments that need a wow factor.</h2>
-      <p data-i18n="cases.p">The same arm, restyled and rebriefed for the room it's working in — from a wedding welcome table to a trade-show booth.</p>
+      <p data-i18n="cases.p">The same arm, restyled and rebriefed for the room it's working in, from a wedding welcome table to a trade-show booth.</p>
     </div>
     <div class="cases reveal">
       <div class="case-card">
@@ -593,7 +599,7 @@
     <div class="section-head reveal">
       <div class="eyebrow" data-i18n="exp.eyebrow">THE EXPERIENCE</div>
       <h2 data-i18n="exp.h2">More than a drink. A moment worth sharing.</h2>
-      <p data-i18n="exp.p">Robobar turns serving into a show — and a show into content, conversation and a brand people remember.</p>
+      <p data-i18n="exp.p">Robobar turns serving into a show, and a show into content, conversation and a brand people remember.</p>
     </div>
     <div class="exp-grid reveal">
       <div class="exp-video">
@@ -604,15 +610,15 @@
       <div class="exp-values">
         <div class="value-card">
           <h4><span class="vc-ic">★</span><span data-i18n="exp.v1h">A magnet for the room</span></h4>
-          <p data-i18n="exp.v1p">The arm draws a crowd the second it moves. Guests gather, phones come out, and your event has its signature moment — the one people remember and retell.</p>
+          <p data-i18n="exp.v1p">The arm draws a crowd the second it moves. Guests gather, phones come out, and your event has its signature moment, the one people remember and retell.</p>
         </div>
         <div class="value-card">
           <h4><span class="vc-ic">↗</span><span data-i18n="exp.v2h">Content that travels</span></h4>
-          <p data-i18n="exp.v2p">Every pour is a clip worth posting. Your event — and your brand — keeps spreading across stories and feeds long after the night ends.</p>
+          <p data-i18n="exp.v2p">Every pour is a clip worth posting, and your event and your brand keep spreading across stories and feeds long after the night ends.</p>
         </div>
         <div class="value-card">
           <h4><span class="vc-ic">◎</span><span data-i18n="exp.v3h">Flawless, all night long</span></h4>
-          <p data-i18n="exp.v3p">The same cinematic, repeatable motion for the first guest and the five-hundredth. No queues at a tired bar, no off pours, no spills — just consistency that looks effortless.</p>
+          <p data-i18n="exp.v3p">The same cinematic, repeatable motion for the first guest and the five-hundredth. No queues at a tired bar, no off pours, no spills, just consistency that looks effortless.</p>
         </div>
         <div class="value-card">
           <h4><span class="vc-ic">✦</span><span data-i18n="exp.v4h">Yours for the night</span></h4>
@@ -641,7 +647,7 @@
         <div class="process-step">
           <div class="btn-led">02</div>
           <h4 data-i18n="process.s2h">Programming & preparation</h4>
-          <p data-i18n="process.s2p">Full robot programming, system configuration and complete testing at our facilities — before anything reaches your venue.</p>
+          <p data-i18n="process.s2p">Full robot programming, system configuration and complete testing at our facilities, before anything reaches your venue.</p>
         </div>
         <div class="process-step">
           <div class="btn-led">03</div>
@@ -659,7 +665,7 @@
     <div class="section-head reveal">
       <div class="eyebrow" data-i18n="gallery.eyebrow">PREVIEW GALLERY</div>
       <h2 data-i18n="gallery.h2">The arm, in the field.</h2>
-      <p data-i18n="gallery.p">A look at the robot and its control panel across different settings and brand finishes — a preview of the experience your guests will get.</p>
+      <p data-i18n="gallery.p">A look at the robot and its control panel across different settings and brand finishes. It's a preview of the experience your guests will get.</p>
     </div>
     <div class="gallery reveal">
       <figure class="g-tall"><img src="assets/img/arm-back-brick.jpg" loading="lazy" alt="Robotic arm seen from behind on a terrace bar"><figcaption data-i18n="gallery.g1">Terrace setup · brick backdrop</figcaption></figure>
@@ -670,7 +676,7 @@
       <figure><img src="assets/img/spacelab-hedge.jpg" loading="lazy" alt="Robotic bar against a flowering hedge backdrop"><figcaption data-i18n="gallery.g6">Garden backdrop</figcaption></figure>
       <figure class="g-tall"><img src="assets/img/pour-closeup-2.jpg" loading="lazy" alt="Robotic arm pouring champagne mid-motion"><figcaption data-i18n="gallery.g7">Mid-pour</figcaption></figure>
     </div>
-    <p class="gallery-note" data-i18n="gallery.note">// preview imagery — demonstration units shown with example branding panels. Final photography from your own event added on request.</p>
+    <p class="gallery-note" data-i18n="gallery.note">// preview imagery. Demonstration units shown with example branding panels. Final photography from your own event added on request.</p>
   </div>
 </section>
 
@@ -684,12 +690,12 @@
     <div class="regions-wrap reveal">
       <div>
         <ul class="region-list">
-          <li class="base"><em data-i18n="regions.spain">Spain</em> <span data-i18n="regions.spainTag">HOME BASE — SAN SEBASTIÁN · NATIONWIDE</span></li>
+          <li class="base"><em data-i18n="regions.spain">Spain</em> <span data-i18n="regions.spainTag">HOME BASE · SAN SEBASTIÁN · NATIONWIDE</span></li>
           <li><em data-i18n="regions.france">France</em> <span data-i18n="regions.onRequest">ON REQUEST</span></li>
           <li><em data-i18n="regions.germany">Germany</em> <span data-i18n="regions.onRequest2">ON REQUEST</span></li>
           <li><em data-i18n="regions.italy">Italy</em> <span data-i18n="regions.onRequest3">ON REQUEST</span></li>
         </ul>
-        <p class="region-note" data-i18n-html="regions.note">Travelling further? <b>Get in touch</b> — international bookings outside these four countries are considered case by case, depending on logistics and event date.</p>
+        <p class="region-note" data-i18n-html="regions.note">Travelling further? <b>Get in touch</b>. International bookings outside these four countries are considered case by case, depending on logistics and event date.</p>
       </div>
       <div class="specs">
         <div class="spec"><div class="v">4</div><div class="k" data-i18n="regions.spec1">drink stations / bottle mounts</div></div>
@@ -711,7 +717,7 @@
     <div class="reveal" style="max-width:840px;">
       <div class="faq-item open">
         <button class="faq-q"><span data-i18n="faq.q1">What can the robot serve?</span><span class="plus"></span></button>
-        <div class="faq-a"><p data-i18n="faq.a1">Champagne, wine, spirits, cocktails and mocktails — anything that can be poured from a bottle. Tell us your menu in advance and we'll set up the right bottle mounts and glassware for it.</p></div>
+        <div class="faq-a"><p data-i18n="faq.a1">Champagne, wine, spirits, cocktails and mocktails, anything that can be poured from a bottle. Tell us your menu in advance and we'll set up the right bottle mounts and glassware for it.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q"><span data-i18n="faq.q2">Can we put our own branding on the unit?</span><span class="plus"></span></button>
@@ -719,19 +725,19 @@
       </div>
       <div class="faq-item">
         <button class="faq-q"><span data-i18n="faq.q3">Does it need to be plugged in?</span><span class="plus"></span></button>
-        <div class="faq-a"><p data-i18n="faq.a3">No — Robobar can run entirely on battery, so it isn't tied to a power outlet. When a standard 230V socket is available nearby, it can run on mains instead. Either way, placement is dictated by your venue layout, not by cable routing.</p></div>
+        <div class="faq-a"><p data-i18n="faq.a3">No. Robobar can run entirely on battery, so it isn't tied to a power outlet. When a standard 230V socket is available nearby, it can run on mains instead. Either way, placement is dictated by your venue layout, not by cable routing.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q"><span data-i18n="faq.q4">What does the venue need to provide?</span><span class="plus"></span></button>
-        <div class="faq-a"><p data-i18n="faq.a4">A flat surface of roughly 1.5m² and cover from direct sun or rain if the event is outdoors. A standard power socket nearby is optional — the unit works on battery if there isn't one. We bring the rest, including glassware mounts and the control panel.</p></div>
+        <div class="faq-a"><p data-i18n="faq.a4">A flat surface of roughly 1.5m² and cover from direct sun or rain if the event is outdoors. A standard power socket nearby is optional, since the unit works on battery if there isn't one. We bring the rest, including glassware mounts and the control panel.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q"><span data-i18n="faq.q5">Is the robot supervised during the event?</span><span class="plus"></span></button>
-        <div class="faq-a"><p data-i18n="faq.a5">Yes, one of our engineers is always on site to install, dismantle and manage the unit throughout — the robot performs the pour, but a person is always nearby.</p></div>
+        <div class="faq-a"><p data-i18n="faq.a5">Yes, one of our engineers is always on site to install, dismantle and manage the unit throughout. The robot performs the pour, but a person is always nearby.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q"><span data-i18n="faq.q6">How far in advance should we book?</span><span class="plus"></span></button>
-        <div class="faq-a"><p data-i18n="faq.a6">We recommend 4–6 weeks for weddings and private events, and earlier for peak season (May–September) or for international dates outside Spain. Send us your date as soon as you have it and we'll confirm availability.</p></div>
+        <div class="faq-a"><p data-i18n="faq.a6">We recommend 4 to 6 weeks for weddings and private events, and earlier for peak season (May to September) or for international dates outside Spain. Send us your date as soon as you have it and we'll confirm availability.</p></div>
       </div>
     </div>
   </div>
@@ -752,7 +758,7 @@
         </div>
       </div>
       <form class="reveal" id="quoteForm" action="https://formspree.io/f/xdarebzr" method="POST">
-        <input type="hidden" name="_subject" value="New quote request — Robotics Bartender">
+        <input type="hidden" name="_subject" value="New quote request · Robotics Bartender">
         <div class="form-row">
           <div><label for="fname" data-i18n="form.name">Full name</label><input id="fname" name="name" type="text" data-i18n-ph="form.namePh" placeholder="Jane Doe" required></div>
           <div><label for="femail" data-i18n="form.email">Email</label><input id="femail" name="email" type="email" placeholder="jane@email.com" required></div>
@@ -848,14 +854,14 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span data-i18n-html="footer.bottom1">© <span id="year"></span> Robotics Bartender · Vladislavo Lysenko (autónomo), San Sebastián, Spain.</span>
-      <span data-i18n="footer.bottom2">Robotic bar service — drinks supplied by client/venue.</span>
+      <span data-i18n-html="footer.bottom1">© <span id="year"></span> Robotics Bartender · Vladyslav Lysenko (autónomo), San Sebastián, Spain.</span>
+      <span data-i18n="footer.bottom2">Robotic bar service. Drinks supplied by client/venue.</span>
     </div>
   </div>
 </footer>
 
 <!-- ================= COOKIE BANNER ================= -->
-<div class="cookie-banner" id="cookieBanner" hidden>
+<div class="cookie-banner" id="cookieBanner">
   <p data-i18n-html="cookie.text">We use only essential cookies to make this site work, plus optional ones to understand traffic. You can accept or reject the optional ones. See our <a href="cookies.html">Cookie Policy</a>.</p>
   <div class="cookie-actions">
     <button class="btn btn-ghost" id="cookieReject" data-i18n="cookie.reject">Reject optional</button>
@@ -873,46 +879,46 @@
       'nav.concept':'Concept','nav.cases':'Use cases','nav.experience':'The experience','nav.process':'Process','nav.gallery':'Gallery','nav.regions':'Where we go','nav.faq':'FAQ','nav.cta':'Request a quote',
       'hero.eyebrow':'ROBOTIC BAR · WEDDINGS · BRAND ACTIVATIONS · LUXURY EVENTS',
       'hero.title':'Your event,<br>the moment<br><em>everyone films.</em>',
-      'hero.sub':"A robotic arm takes the floor — pouring with cinematic precision as your guests gather, film and share. It isn't a bar. It's the centerpiece they'll be talking about long after the last glass.",
+      'hero.sub':"A robotic arm takes the floor, pouring with cinematic precision as your guests gather, film and share. It isn't a bar. It's the centerpiece they'll be talking about long after the last glass.",
       'hero.cta1':'Request a quote →','hero.cta2':'See it in action',
       'hero.r1':'<b>Based in San Sebastián</b> · available nationwide','hero.r2':'Touring <b>France · Germany · Italy</b>','hero.r3':'Further afield <b>on request</b>',
       'concept.eyebrow':'THE CONCEPT',
-      'concept.h2':'A robotic arm that serves — you supply the drinks, we supply the spectacle.',
-      'concept.lead':'We call the system <b>Robobar</b> — a precision robotic arm built to be the centerpiece of the room, not just the bar.',
-      'concept.p1h':'Champagne, wine, spirits or mocktails','concept.p1p':"The arm handles bottles, pours into flutes, glasses or shot glasses, and repeats the exact same motion every time — whatever you're serving, the pour is identical, glass after glass.",
-      'concept.p2h':'Battery or mains — goes anywhere','concept.p2p':"Robobar runs on battery for full off-grid freedom, or plugs into a standard 230V socket when one's nearby. Set it up on the lawn, the rooftop or the show floor — wherever the event actually is.",
-      'concept.p3h':'Built-in marketing tools','concept.p3p':"Gate each pour behind a QR code, a short survey or a follow on your event's social account — guests get a drink, you get a lead or a new follower.",
-      'cases.eyebrow':'USE CASES','cases.h2':'Built for the moments that need a wow factor.','cases.p':"The same arm, restyled and rebriefed for the room it's working in — from a wedding welcome table to a trade-show booth.",
+      'concept.h2':'A robotic arm that serves. You supply the drinks, we supply the spectacle.',
+      'concept.lead':'We call the system <b>Robobar</b>, a precision robotic arm built to be the centerpiece of the room, not just the bar.',
+      'concept.p1h':'Custom branding to match your event','concept.p1p':"Personalise the counter to your event's style, with your logo on the front panel and the backlight colours set to match your palette.",
+      'concept.p2h':'Battery or mains, goes anywhere','concept.p2p':"Robobar runs on battery for full off-grid freedom, or plugs into a standard 230V socket when one's nearby. Set it up on the lawn, the rooftop or the show floor, wherever the event actually is.",
+      'concept.p3h':'Built-in marketing tools','concept.p3p':"Gate each pour behind a QR code, a short survey or a follow on your event's social account. Guests get a drink, you get a lead or a new follower.",
+      'cases.eyebrow':'USE CASES','cases.h2':'Built for the moments that need a wow factor.','cases.p':"The same arm, restyled and rebriefed for the room it's working in, from a wedding welcome table to a trade-show booth.",
       'cases.c1tag':'CEREMONY & RECEPTION','cases.c1h':'Weddings & private events','cases.c2tag':'FINTECH · TELECOM · IT GALAS','cases.c2h':'Corporate events','cases.c3tag':'LAUNCHES & TRADE SHOWS','cases.c3h':'Brand activations','cases.c4tag':'CELEBRATIONS','cases.c4h':'Private parties',
-      'exp.eyebrow':'THE EXPERIENCE','exp.h2':'More than a drink. A moment worth sharing.','exp.p':'Robobar turns serving into a show — and a show into content, conversation and a brand people remember.',
-      'exp.v1h':'A magnet for the room','exp.v1p':'The arm draws a crowd the second it moves. Guests gather, phones come out, and your event has its signature moment — the one people remember and retell.',
-      'exp.v2h':'Content that travels','exp.v2p':'Every pour is a clip worth posting. Your event — and your brand — keeps spreading across stories and feeds long after the night ends.',
-      'exp.v3h':'Flawless, all night long','exp.v3p':'The same cinematic, repeatable motion for the first guest and the five-hundredth. No queues at a tired bar, no off pours, no spills — just consistency that looks effortless.',
+      'exp.eyebrow':'THE EXPERIENCE','exp.h2':'More than a drink. A moment worth sharing.','exp.p':'Robobar turns serving into a show, and a show into content, conversation and a brand people remember.',
+      'exp.v1h':'A magnet for the room','exp.v1p':'The arm draws a crowd the second it moves. Guests gather, phones come out, and your event has its signature moment, the one people remember and retell.',
+      'exp.v2h':'Content that travels','exp.v2p':'Every pour is a clip worth posting, and your event and your brand keep spreading across stories and feeds long after the night ends.',
+      'exp.v3h':'Flawless, all night long','exp.v3p':'The same cinematic, repeatable motion for the first guest and the five-hundredth. No queues at a tired bar, no off pours, no spills, just consistency that looks effortless.',
       'exp.v4h':'Yours for the night','exp.v4p':'Wrap it in your colours, map the menu to your drinks, theme the lighting to your brand. For one night, the showpiece of the room is entirely yours.',
       'process.eyebrow':'HOW WE WORK TOGETHER','process.h2':'Three stages, start to finish.','process.p':"From first call to last call, here's exactly what happens between booking Robobar and seeing it pour at your event.",
       'process.s1h':'Concept alignment','process.s1p':'We build a custom drink menu, design the bar setup, and map out a lead-generation workflow tailored to your brand.',
-      'process.s2h':'Programming & preparation','process.s2p':'Full robot programming, system configuration and complete testing at our facilities — before anything reaches your venue.',
+      'process.s2h':'Programming & preparation','process.s2p':'Full robot programming, system configuration and complete testing at our facilities, before anything reaches your venue.',
       'process.s3h':'Installation & launch','process.s3p':'We deliver, set up on site, and our engineer provides full technical support throughout the entire event.',
-      'gallery.eyebrow':'PREVIEW GALLERY','gallery.h2':'The arm, in the field.','gallery.p':'A look at the robot and its control panel across different settings and brand finishes — a preview of the experience your guests will get.',
+      'gallery.eyebrow':'PREVIEW GALLERY','gallery.h2':'The arm, in the field.','gallery.p':"A look at the robot and its control panel across different settings and brand finishes. It's a preview of the experience your guests will get.",
       'gallery.g1':'Terrace setup · brick backdrop','gallery.g2':'Flute tray · ready to pour','gallery.g3':'Precision grip','gallery.g4':'Indoor private suite','gallery.g5':'Coastal venue','gallery.g6':'Garden backdrop','gallery.g7':'Mid-pour',
-      'gallery.note':'// preview imagery — demonstration units shown with example branding panels. Final photography from your own event added on request.',
+      'gallery.note':'// preview imagery. Demonstration units shown with example branding panels. Final photography from your own event added on request.',
       'regions.eyebrow':'WHERE WE OPERATE','regions.h2':'Based in Spain. Touring Europe.',
-      'regions.spain':'Spain','regions.spainTag':'HOME BASE — SAN SEBASTIÁN · NATIONWIDE','regions.france':'France','regions.germany':'Germany','regions.italy':'Italy','regions.onRequest':'ON REQUEST','regions.onRequest2':'ON REQUEST','regions.onRequest3':'ON REQUEST',
-      'regions.note':'Travelling further? <b>Get in touch</b> — international bookings outside these four countries are considered case by case, depending on logistics and event date.',
+      'regions.spain':'Spain','regions.spainTag':'HOME BASE · SAN SEBASTIÁN · NATIONWIDE','regions.france':'France','regions.germany':'Germany','regions.italy':'Italy','regions.onRequest':'ON REQUEST','regions.onRequest2':'ON REQUEST','regions.onRequest3':'ON REQUEST',
+      'regions.note':'Travelling further? <b>Get in touch</b>. International bookings outside these four countries are considered case by case, depending on logistics and event date.',
       'regions.spec1':'drink stations / bottle mounts','regions.spec2':'footprint required','regions.spec3v':'Indoor / Outdoor','regions.spec3':'covered area for rain & direct sun','regions.spec4v':'Battery or 230V','regions.spec4':'off-grid or standard socket',
       'faq.eyebrow':'FAQ','faq.h2':'Good to know before you book.',
-      'faq.q1':'What can the robot serve?','faq.a1':"Champagne, wine, spirits, cocktails and mocktails — anything that can be poured from a bottle. Tell us your menu in advance and we'll set up the right bottle mounts and glassware for it.",
+      'faq.q1':'What can the robot serve?','faq.a1':"Champagne, wine, spirits, cocktails and mocktails, anything that can be poured from a bottle. Tell us your menu in advance and we'll set up the right bottle mounts and glassware for it.",
       'faq.q2':'Can we put our own branding on the unit?','faq.a2':'Yes. The front panel accepts a printed or vinyl wrap, and the under-lighting colour can be matched to your palette, so the unit can carry your company or event branding for the day. Ask us for the panel template when you book.',
-      'faq.q3':'Does it need to be plugged in?','faq.a3':"No — Robobar can run entirely on battery, so it isn't tied to a power outlet. When a standard 230V socket is available nearby, it can run on mains instead. Either way, placement is dictated by your venue layout, not by cable routing.",
-      'faq.q4':'What does the venue need to provide?','faq.a4':'A flat surface of roughly 1.5m² and cover from direct sun or rain if the event is outdoors. A standard power socket nearby is optional — the unit works on battery if there isn\'t one. We bring the rest, including glassware mounts and the control panel.',
-      'faq.q5':'Is the robot supervised during the event?','faq.a5':'Yes, one of our engineers is always on site to install, dismantle and manage the unit throughout — the robot performs the pour, but a person is always nearby.',
-      'faq.q6':'How far in advance should we book?','faq.a6':'We recommend 4–6 weeks for weddings and private events, and earlier for peak season (May–September) or for international dates outside Spain. Send us your date as soon as you have it and we\'ll confirm availability.',
+      'faq.q3':'Does it need to be plugged in?','faq.a3':"No. Robobar can run entirely on battery, so it isn't tied to a power outlet. When a standard 230V socket is available nearby, it can run on mains instead. Either way, placement is dictated by your venue layout, not by cable routing.",
+      'faq.q4':'What does the venue need to provide?','faq.a4':"A flat surface of roughly 1.5m² and cover from direct sun or rain if the event is outdoors. A standard power socket nearby is optional, since the unit works on battery if there isn't one. We bring the rest, including glassware mounts and the control panel.",
+      'faq.q5':'Is the robot supervised during the event?','faq.a5':'Yes, one of our engineers is always on site to install, dismantle and manage the unit throughout. The robot performs the pour, but a person is always nearby.',
+      'faq.q6':'How far in advance should we book?','faq.a6':"We recommend 4 to 6 weeks for weddings and private events, and earlier for peak season (May to September) or for international dates outside Spain. Send us your date as soon as you have it and we'll confirm availability.",
       'contact.eyebrow':'REQUEST A QUOTE','contact.h2':'Tell us about your event.','contact.p':"Send over the basics and we'll come back to you within 48 hours with availability and a quote. No commitment, no obligation.",
       'form.name':'Full name','form.namePh':'Jane Doe','form.email':'Email','form.phone':'Phone','form.ccSearch':'Search country…','form.phoneTitle':'Enter at least 6 digits','form.date':'Event date','form.type':'Event type','form.typePh':'Select event type…','form.type1':'Wedding / private event','form.type2':'Corporate event / IT gala','form.type3':'Brand activation / trade show','form.type4':'Festival / entertainment night','form.type5':'Other','form.location':'Event location','form.locationPh':'City, country','form.message':'Tell us more','form.messagePh':"Guest count, drinks you'd like served, indoor/outdoor, anything else useful...",
       'form.consent':'I have read and accept the <a href="privacy.html" target="_blank">Privacy Policy</a> and consent to my data being used to respond to this enquiry.',
-      'form.submit':'Send request →','form.sending':'Sending…','form.sent':'Sent ✓','form.success':"We've received your request and will get back to you within 48 hours.",'form.error':'Something went wrong — please email us directly at hello@roboticsbartender.com',
+      'form.submit':'Send request →','form.sending':'Sending…','form.sent':'Sent ✓','form.success':"We've received your request and will get back to you within 48 hours.",'form.error':'Something went wrong. Please email us directly at hello@roboticsbartender.com',
       'footer.tagline':'Beyond Ordinary.','footer.site':'Site','footer.legal':'Legal','footer.privacy':'Privacy Policy','footer.cookies':'Cookie Policy','footer.terms':'Terms of Service','footer.contact':'Contact',
-      'footer.bottom1':'© <span id="year"></span> Robotics Bartender · Vladislavo Lysenko (autónomo), San Sebastián, Spain.','footer.bottom2':'Robotic bar service — drinks supplied by client/venue.',
+      'footer.bottom1':'© <span id="year"></span> Robotics Bartender · Vladyslav Lysenko (autónomo), San Sebastián, Spain.','footer.bottom2':'Robotic bar service. Drinks supplied by client/venue.',
       'cookie.text':'We use only essential cookies to make this site work, plus optional ones to understand traffic. You can accept or reject the optional ones. See our <a href="cookies.html">Cookie Policy</a>.','cookie.accept':'Accept all','cookie.reject':'Reject optional'
     },
     es: {
@@ -920,46 +926,46 @@
       'nav.concept':'Concepto','nav.cases':'Casos de uso','nav.experience':'La experiencia','nav.process':'Proceso','nav.gallery':'Galería','nav.regions':'Dónde vamos','nav.faq':'FAQ','nav.cta':'Solicitar presupuesto',
       'hero.eyebrow':'BAR ROBÓTICO · BODAS · ACTIVACIONES DE MARCA · EVENTOS DE LUJO',
       'hero.title':'Tu evento,<br>el momento<br><em>que todos graban.</em>',
-      'hero.sub':'Un brazo robótico toma el protagonismo — sirviendo con precisión cinematográfica mientras tus invitados se acercan, graban y comparten. No es una barra. Es el centro de atención del que seguirán hablando mucho después de la última copa.',
+      'hero.sub':'Un brazo robótico toma el protagonismo y sirve con precisión cinematográfica mientras tus invitados se acercan, graban y comparten. No es una barra. Es el centro de atención del que seguirán hablando mucho después de la última copa.',
       'hero.cta1':'Solicitar presupuesto →','hero.cta2':'Verlo en acción',
       'hero.r1':'<b>Con base en San Sebastián</b> · disponible en toda España','hero.r2':'De gira por <b>Francia · Alemania · Italia</b>','hero.r3':'Más lejos <b>bajo petición</b>',
       'concept.eyebrow':'EL CONCEPTO',
-      'concept.h2':'Un brazo robótico que sirve — tú pones las bebidas, nosotros ponemos el espectáculo.',
-      'concept.lead':'Llamamos al sistema <b>Robobar</b> — un brazo robótico de precisión creado para ser el centro de atención de la sala, no solo la barra.',
-      'concept.p1h':'Champán, vino, destilados o mocktails','concept.p1p':'El brazo maneja las botellas, sirve en copas de flauta, vasos o chupitos, y repite exactamente el mismo movimiento cada vez — sirvas lo que sirvas, el servicio es idéntico, copa tras copa.',
-      'concept.p2h':'Batería o red eléctrica — va a cualquier sitio','concept.p2p':'Robobar funciona con batería para total libertad sin enchufes, o se conecta a una toma estándar de 230V cuando hay una cerca. Colócalo en el césped, la azotea o la feria — donde el evento realmente esté.',
-      'concept.p3h':'Herramientas de marketing integradas','concept.p3p':'Condiciona cada servicio a un código QR, una breve encuesta o un seguimiento en la red social del evento — los invitados consiguen una copa, tú consigues un lead o un nuevo seguidor.',
-      'cases.eyebrow':'CASOS DE USO','cases.h2':'Creado para los momentos que necesitan un factor sorpresa.','cases.p':'El mismo brazo, reestilizado y readaptado para la sala en la que trabaja — desde una mesa de bienvenida de boda hasta un stand de feria.',
+      'concept.h2':'Un brazo robótico que sirve. Tú pones las bebidas, nosotros ponemos el espectáculo.',
+      'concept.lead':'Llamamos al sistema <b>Robobar</b>, un brazo robótico de precisión creado para ser el centro de atención de la sala, no solo la barra.',
+      'concept.p1h':'Personalización de la barra según tu evento','concept.p1p':'Personalizamos la barra al estilo de tu evento, con tu logotipo en el panel frontal y los colores de la iluminación ajustados a tu paleta.',
+      'concept.p2h':'Batería o red eléctrica, va a cualquier sitio','concept.p2p':'Robobar funciona con batería para total libertad sin enchufes, o se conecta a una toma estándar de 230V cuando hay una cerca. Colócalo en el césped, la azotea o la feria, donde el evento realmente esté.',
+      'concept.p3h':'Herramientas de marketing integradas','concept.p3p':'Condiciona cada servicio a un código QR, una breve encuesta o un seguimiento en la red social del evento. Los invitados consiguen una copa, tú consigues un lead o un nuevo seguidor.',
+      'cases.eyebrow':'CASOS DE USO','cases.h2':'Creado para los momentos que necesitan un factor sorpresa.','cases.p':'El mismo brazo, reestilizado y readaptado para la sala en la que trabaja, desde una mesa de bienvenida de boda hasta un stand de feria.',
       'cases.c1tag':'CEREMONIA Y BANQUETE','cases.c1h':'Bodas y eventos privados','cases.c2tag':'FINTECH · TELECO · GALAS IT','cases.c2h':'Eventos corporativos','cases.c3tag':'LANZAMIENTOS Y FERIAS','cases.c3h':'Activaciones de marca','cases.c4tag':'CELEBRACIONES','cases.c4h':'Fiestas privadas',
-      'exp.eyebrow':'LA EXPERIENCIA','exp.h2':'Más que una copa. Un momento que merece compartirse.','exp.p':'Robobar convierte el servicio en un espectáculo — y el espectáculo en contenido, conversación y una marca que la gente recuerda.',
-      'exp.v1h':'Un imán para la sala','exp.v1p':'El brazo atrae a la multitud en cuanto se mueve. Los invitados se acercan, salen los móviles, y tu evento tiene su momento estrella — el que la gente recuerda y cuenta.',
-      'exp.v2h':'Contenido que viaja','exp.v2p':'Cada servicio es un clip que merece publicarse. Tu evento — y tu marca — se siguen difundiendo por stories y feeds mucho después de que termine la noche.',
-      'exp.v3h':'Impecable, toda la noche','exp.v3p':'El mismo movimiento cinematográfico y repetible para el primer invitado y para el quinientos. Sin colas en una barra cansada, sin servicios fallidos, sin derrames — solo una consistencia que parece sin esfuerzo.',
+      'exp.eyebrow':'LA EXPERIENCIA','exp.h2':'Más que una copa. Un momento que merece compartirse.','exp.p':'Robobar convierte el servicio en un espectáculo, y el espectáculo en contenido, conversación y una marca que la gente recuerda.',
+      'exp.v1h':'Un imán para la sala','exp.v1p':'El brazo atrae a la multitud en cuanto se mueve. Los invitados se acercan, salen los móviles, y tu evento tiene su momento estrella, el que la gente recuerda y cuenta.',
+      'exp.v2h':'Contenido que viaja','exp.v2p':'Cada servicio es un clip que merece publicarse, y tu evento y tu marca se siguen difundiendo por stories y feeds mucho después de que termine la noche.',
+      'exp.v3h':'Impecable, toda la noche','exp.v3p':'El mismo movimiento cinematográfico y repetible para el primer invitado y para el quinientos. Sin colas en una barra cansada, sin servicios fallidos, sin derrames, solo una consistencia que parece sin esfuerzo.',
       'exp.v4h':'Tuyo por una noche','exp.v4p':'Envuélvelo en tus colores, adapta la carta a tus bebidas, ambienta la iluminación a tu marca. Por una noche, la pieza estrella de la sala es enteramente tuya.',
       'process.eyebrow':'CÓMO TRABAJAMOS JUNTOS','process.h2':'Tres etapas, de principio a fin.','process.p':'De la primera llamada a la última copa, esto es exactamente lo que ocurre entre reservar Robobar y verlo servir en tu evento.',
       'process.s1h':'Alineación del concepto','process.s1p':'Creamos una carta de bebidas a medida, diseñamos el montaje de la barra y trazamos un flujo de captación de leads adaptado a tu marca.',
-      'process.s2h':'Programación y preparación','process.s2p':'Programación completa del robot, configuración del sistema y pruebas totales en nuestras instalaciones — antes de que nada llegue a tu local.',
+      'process.s2h':'Programación y preparación','process.s2p':'Programación completa del robot, configuración del sistema y pruebas totales en nuestras instalaciones, antes de que nada llegue a tu local.',
       'process.s3h':'Instalación y puesta en marcha','process.s3p':'Entregamos, montamos en el sitio y nuestro ingeniero ofrece soporte técnico completo durante todo el evento.',
-      'gallery.eyebrow':'GALERÍA PREVIA','gallery.h2':'El brazo, sobre el terreno.','gallery.p':'Un vistazo al robot y su panel de control en distintos entornos y acabados de marca — un anticipo de la experiencia que vivirán tus invitados.',
+      'gallery.eyebrow':'GALERÍA PREVIA','gallery.h2':'El brazo, sobre el terreno.','gallery.p':'Un vistazo al robot y su panel de control en distintos entornos y acabados de marca. Un anticipo de la experiencia que vivirán tus invitados.',
       'gallery.g1':'Montaje en terraza · fondo de ladrillo','gallery.g2':'Bandeja de copas · listo para servir','gallery.g3':'Agarre de precisión','gallery.g4':'Suite privada interior','gallery.g5':'Local costero','gallery.g6':'Fondo de jardín','gallery.g7':'En pleno servicio',
-      'gallery.note':'// imágenes de muestra — unidades de demostración con paneles de marca de ejemplo. Fotografía final de tu propio evento añadida bajo petición.',
+      'gallery.note':'// imágenes de muestra. Unidades de demostración con paneles de marca de ejemplo. Fotografía final de tu propio evento añadida bajo petición.',
       'regions.eyebrow':'DÓNDE OPERAMOS','regions.h2':'Con base en España. De gira por Europa.',
-      'regions.spain':'España','regions.spainTag':'BASE — SAN SEBASTIÁN · TODA ESPAÑA','regions.france':'Francia','regions.germany':'Alemania','regions.italy':'Italia','regions.onRequest':'BAJO PETICIÓN','regions.onRequest2':'BAJO PETICIÓN','regions.onRequest3':'BAJO PETICIÓN',
-      'regions.note':'¿Viajas más lejos? <b>Escríbenos</b> — las reservas internacionales fuera de estos cuatro países se estudian caso por caso, según la logística y la fecha del evento.',
+      'regions.spain':'España','regions.spainTag':'BASE · SAN SEBASTIÁN · TODA ESPAÑA','regions.france':'Francia','regions.germany':'Alemania','regions.italy':'Italia','regions.onRequest':'BAJO PETICIÓN','regions.onRequest2':'BAJO PETICIÓN','regions.onRequest3':'BAJO PETICIÓN',
+      'regions.note':'¿Viajas más lejos? <b>Escríbenos</b>. Las reservas internacionales fuera de estos cuatro países se estudian caso por caso, según la logística y la fecha del evento.',
       'regions.spec1':'estaciones de bebida / soportes de botella','regions.spec2':'espacio necesario','regions.spec3v':'Interior / Exterior','regions.spec3':'zona cubierta de lluvia y sol directo','regions.spec4v':'Batería o 230V','regions.spec4':'sin enchufe o toma estándar',
       'faq.eyebrow':'FAQ','faq.h2':'Bueno saberlo antes de reservar.',
-      'faq.q1':'¿Qué puede servir el robot?','faq.a1':'Champán, vino, destilados, cócteles y mocktails — cualquier cosa que se pueda servir de una botella. Cuéntanos tu carta con antelación y prepararemos los soportes de botella y la cristalería adecuados.',
+      'faq.q1':'¿Qué puede servir el robot?','faq.a1':'Champán, vino, destilados, cócteles y mocktails, cualquier cosa que se pueda servir de una botella. Cuéntanos tu carta con antelación y prepararemos los soportes de botella y la cristalería adecuados.',
       'faq.q2':'¿Podemos poner nuestra propia marca en la unidad?','faq.a2':'Sí. El panel frontal admite un vinilo o impresión, y el color de la iluminación inferior puede ajustarse a tu paleta, de modo que la unidad puede llevar la marca de tu empresa o evento durante el día. Pídenos la plantilla del panel al reservar.',
-      'faq.q3':'¿Necesita estar enchufado?','faq.a3':'No — Robobar puede funcionar enteramente con batería, así que no depende de un enchufe. Cuando hay una toma estándar de 230V cerca, puede funcionar con red eléctrica. En cualquier caso, la ubicación la decide la distribución de tu local, no el cableado.',
-      'faq.q4':'¿Qué debe proporcionar el local?','faq.a4':'Una superficie plana de aproximadamente 1,5 m² y cobertura frente al sol directo o la lluvia si el evento es al aire libre. Una toma de corriente cercana es opcional — la unidad funciona con batería si no la hay. Nosotros traemos el resto, incluidos los soportes de cristalería y el panel de control.',
-      'faq.q5':'¿Se supervisa el robot durante el evento?','faq.a5':'Sí, uno de nuestros ingenieros está siempre en el sitio para instalar, desmontar y gestionar la unidad durante todo el evento — el robot realiza el servicio, pero siempre hay una persona cerca.',
-      'faq.q6':'¿Con cuánta antelación deberíamos reservar?','faq.a6':'Recomendamos 4–6 semanas para bodas y eventos privados, y antes para temporada alta (mayo–septiembre) o para fechas internacionales fuera de España. Envíanos tu fecha en cuanto la tengas y confirmaremos disponibilidad.',
+      'faq.q3':'¿Necesita estar enchufado?','faq.a3':'No. Robobar puede funcionar enteramente con batería, así que no depende de un enchufe. Cuando hay una toma estándar de 230V cerca, puede funcionar con red eléctrica. En cualquier caso, la ubicación la decide la distribución de tu local, no el cableado.',
+      'faq.q4':'¿Qué debe proporcionar el local?','faq.a4':'Una superficie plana de aproximadamente 1,5 m² y cobertura frente al sol directo o la lluvia si el evento es al aire libre. Una toma de corriente cercana es opcional, ya que la unidad funciona con batería si no la hay. Nosotros traemos el resto, incluidos los soportes de cristalería y el panel de control.',
+      'faq.q5':'¿Se supervisa el robot durante el evento?','faq.a5':'Sí, uno de nuestros ingenieros está siempre en el sitio para instalar, desmontar y gestionar la unidad durante todo el evento. El robot realiza el servicio, pero siempre hay una persona cerca.',
+      'faq.q6':'¿Con cuánta antelación deberíamos reservar?','faq.a6':'Recomendamos de 4 a 6 semanas para bodas y eventos privados, y antes para temporada alta (de mayo a septiembre) o para fechas internacionales fuera de España. Envíanos tu fecha en cuanto la tengas y confirmaremos disponibilidad.',
       'contact.eyebrow':'SOLICITAR PRESUPUESTO','contact.h2':'Cuéntanos sobre tu evento.','contact.p':'Envíanos lo básico y te responderemos en un plazo de 48 horas con disponibilidad y presupuesto. Sin compromiso, sin obligación.',
       'form.name':'Nombre completo','form.namePh':'Juana Pérez','form.email':'Correo electrónico','form.phone':'Teléfono','form.ccSearch':'Buscar país…','form.phoneTitle':'Introduce al menos 6 dígitos','form.date':'Fecha del evento','form.type':'Tipo de evento','form.typePh':'Selecciona el tipo de evento…','form.type1':'Boda / evento privado','form.type2':'Evento corporativo / gala IT','form.type3':'Activación de marca / feria','form.type4':'Festival / noche de entretenimiento','form.type5':'Otro','form.location':'Lugar del evento','form.locationPh':'Ciudad, país','form.message':'Cuéntanos más','form.messagePh':'Número de invitados, bebidas que te gustaría servir, interior/exterior, cualquier otra cosa útil...',
       'form.consent':'He leído y acepto la <a href="privacy.html" target="_blank">Política de Privacidad</a> y consiento que mis datos se usen para responder a esta consulta.',
-      'form.submit':'Enviar solicitud →','form.sending':'Enviando…','form.sent':'Enviado ✓','form.success':'Hemos recibido tu solicitud y te responderemos en un plazo de 48 horas.','form.error':'Algo ha fallado — escríbenos directamente a hello@roboticsbartender.com',
+      'form.submit':'Enviar solicitud →','form.sending':'Enviando…','form.sent':'Enviado ✓','form.success':'Hemos recibido tu solicitud y te responderemos en un plazo de 48 horas.','form.error':'Algo ha fallado. Escríbenos directamente a hello@roboticsbartender.com',
       'footer.tagline':'Beyond Ordinary.','footer.site':'Sitio','footer.legal':'Legal','footer.privacy':'Política de Privacidad','footer.cookies':'Política de Cookies','footer.terms':'Términos del Servicio','footer.contact':'Contacto',
-      'footer.bottom1':'© <span id="year"></span> Robotics Bartender · Vladislavo Lysenko (autónomo), San Sebastián, España.','footer.bottom2':'Servicio de bar robótico — las bebidas las aporta el cliente/local.',
+      'footer.bottom1':'© <span id="year"></span> Robotics Bartender · Vladyslav Lysenko (autónomo), San Sebastián, España.','footer.bottom2':'Servicio de bar robótico. Las bebidas las aporta el cliente/local.',
       'cookie.text':'Usamos solo cookies esenciales para que el sitio funcione, además de otras opcionales para entender el tráfico. Puedes aceptar o rechazar las opcionales. Consulta nuestra <a href="cookies.html">Política de Cookies</a>.','cookie.accept':'Aceptar todo','cookie.reject':'Rechazar opcionales'
     }
   };
@@ -979,12 +985,13 @@
     localStorage.setItem('lang', lang);
     currentLang = lang;
   }
+  window.applyLang = applyLang;
 
   document.querySelectorAll('#langSwitch .lang-btn').forEach(b=>{
     b.addEventListener('click', ()=>applyLang(b.dataset.lang));
   });
 
-  /* ============ OPTIONAL CMS CONTENT OVERRIDE (Pages CMS / content/site.json) ============ */
+  /* ============ OPTIONAL CMS CONTENT OVERRIDE (content/site.json) ============ */
   fetch('content/site.json').then(r=>r.ok?r.json():null).then(d=>{
     if(!d) return;
     ['en','es'].forEach(l=>{ if(d[l]) Object.assign(I18N[l], d[l]); });
@@ -1065,7 +1072,7 @@
   function renderCC(q){
     const lq=(q||'').toLowerCase();
     const matches=COUNTRIES.filter(c=>!lq||c.n.toLowerCase().includes(lq)||c.c.includes(lq));
-    if(!matches.length){ ccList.innerHTML='<li class="cc-empty">—</li>'; return; }
+    if(!matches.length){ ccList.innerHTML='<li class="cc-empty">No results</li>'; return; }
     ccList.innerHTML=matches.map(c=>'<li class="cc-opt" data-code="'+c.c+'" data-iso="'+c.i+'"><img class="cc-flag" src="'+flagURL(c.i)+'" alt="" width="21" height="15" loading="lazy"><span class="cn">'+c.n+'</span><span class="ck">'+c.c+'</span></li>').join('');
     ccList.querySelectorAll('.cc-opt').forEach(li=>{
       li.addEventListener('mousedown', e=>{ e.preventDefault(); ccFlag.src=flagURL(li.dataset.iso); ccCode.textContent=li.dataset.code; ccValue.value=li.dataset.code; closeCC(); });
@@ -1099,8 +1106,8 @@
 
   /* ============ COOKIE CONSENT ============ */
   const cookieBanner=document.getElementById('cookieBanner');
-  function setConsent(v){ try{ localStorage.setItem('cookieConsent', v); }catch(e){} cookieBanner.hidden=true; }
-  if(!localStorage.getItem('cookieConsent')){ cookieBanner.hidden=false; }
+  function setConsent(v){ try{ localStorage.setItem('cookieConsent', v); }catch(e){} cookieBanner.classList.remove('show'); }
+  if(!localStorage.getItem('cookieConsent')){ cookieBanner.classList.add('show'); }
   document.getElementById('cookieAccept').addEventListener('click', ()=>setConsent('all'));
   document.getElementById('cookieReject').addEventListener('click', ()=>setConsent('essential'));
 </script>

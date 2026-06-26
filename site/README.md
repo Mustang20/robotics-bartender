@@ -10,10 +10,30 @@ index.html            ← the whole site (HTML + CSS + JS in one file), with i18
 privacy.html          ← Privacy Policy (bilingual)
 cookies.html          ← Cookie Policy (bilingual)
 terms.html            ← Terms of Service (bilingual)
-content/site.json     ← editable text & image overrides (read by index.html, edited by the CMS)
+admin.html            ← visual editor: double-click text on a live preview to edit
+content/site.json     ← editable text & image overrides (read by index.html, written by admin/CMS)
 .pages.yml            ← Pages CMS configuration (the browser editor)
 assets/img/           ← all photos, the demo video, and both logo versions
 ```
+
+## Visual editor (admin.html)
+
+For quick edits without GitHub, open **`admin.html`** through a local server. It shows
+your real site; double-click any text to edit it in place, click an image to change its
+file, switch EN/ES to edit each language, then press **Save changes**. It writes to
+`content/site.json`, which the site reads automatically.
+
+1. From this folder start a local server, e.g. `python -m http.server`.
+2. Open `http://localhost:8000/admin.html`.
+3. Edit, then Save. In Chrome/Edge it writes straight to `content/site.json` (pick that
+   file when asked the first time). In other browsers it downloads `site.json` — move it
+   into the `content/` folder, replacing the old one.
+4. Reload the site to see the changes. Commit/push `content/site.json` to publish.
+
+> The editor must be served over `http://` (not opened from disk) so it can read the page.
+> Unlike Pages CMS (which only exposes the fields listed in `.pages.yml`), `admin.html`
+> lets you edit **any** text on the page, and saves only what you changed into
+> `content/site.json`. Pages CMS remains available for editing from anywhere via GitHub.
 
 ## Languages (EN / ES)
 
@@ -66,7 +86,7 @@ event type, and the privacy-consent checkbox.
   page clears it.
 - Privacy Policy, Cookie Policy and Terms are linked in the footer and from the form's
   consent checkbox. They reference the data controller details you provided
-  (Vladislavo Lysenko, NIE Z3859460L, San Sebastián).
+  (Vladyslav Lysenko, NIE Z3859460L, San Sebastián).
 - The site uses Google Fonts and flagcdn.com (flag images), which receive visitors' IPs
   as a technical necessity — this is disclosed in the policies. For maximum strictness you
   could later self-host the fonts and flag images to avoid those third-party requests.
